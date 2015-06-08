@@ -16,7 +16,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+
+    [[[self.tabBarController.viewControllers objectAtIndex:0] tabBarItem]setFinishedSelectedImage:[UIImage imageNamed:@"Home"] withFinishedUnselectedImage:[UIImage imageNamed:@"Home"]];
+
 }
 
 - (void)didReceiveMemoryWarning {

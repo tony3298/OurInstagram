@@ -15,6 +15,7 @@
 		475A58731B26318400C39938 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 475A58721B26318400C39938 /* Images.xcassets */; };
 		475A58761B26318400C39938 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 475A58741B26318400C39938 /* LaunchScreen.xib */; };
 		475A58821B26318400C39938 /* OurInstagramTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 475A58811B26318400C39938 /* OurInstagramTests.m */; };
+		475A588D1B263FD000C39938 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 475A588C1B263FD000C39938 /* SearchViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,8 @@
 		475A587B1B26318400C39938 /* OurInstagramTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OurInstagramTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		475A58801B26318400C39938 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		475A58811B26318400C39938 /* OurInstagramTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OurInstagramTests.m; sourceTree = "<group>"; };
+		475A588B1B263FD000C39938 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
+		475A588C1B263FD000C39938 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +91,8 @@
 				475A586C1B26318400C39938 /* ViewController.h */,
 				475A586D1B26318400C39938 /* ViewController.m */,
 				475A586F1B26318400C39938 /* Main.storyboard */,
+				475A588B1B263FD000C39938 /* SearchViewController.h */,
+				475A588C1B263FD000C39938 /* SearchViewController.m */,
 				475A58721B26318400C39938 /* Images.xcassets */,
 				475A58741B26318400C39938 /* LaunchScreen.xib */,
 				475A58691B26318400C39938 /* OurInstagram.xcdatamodeld */,
@@ -224,6 +229,7 @@
 			files = (
 				475A58681B26318400C39938 /* AppDelegate.m in Sources */,
 				475A58651B26318400C39938 /* main.m in Sources */,
+				475A588D1B263FD000C39938 /* SearchViewController.m in Sources */,
 				475A586E1B26318400C39938 /* ViewController.m in Sources */,
 				475A586B1B26318400C39938 /* OurInstagram.xcdatamodeld in Sources */,
 			);
