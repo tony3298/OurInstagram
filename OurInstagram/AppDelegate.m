@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import <Parse/Parse.h>
 
 @interface AppDelegate ()
 
@@ -14,12 +15,17 @@
 
 @implementation AppDelegate
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    // [Optional] Power your app with Local Datastore. For more info, go to
+    // https://parse.com/docs/ios_guide#localdatastore/iOS
+    [Parse enableLocalDatastore];
 
-//    UIImage *blackbackground = [UIImage imageNamed:@"blackbackground"];
-//    [[UITabBar appearance] setSelectionIndicatorImage:blackbackground];
+    // Initialize Parse.
+    [Parse setApplicationId:@"cAotKmItTR54ZfnYsziYIgMkS4PxowgRLcuoujT3"
+                  clientKey:@"9iVYYy2yxga3GkKpBgWDYL5J7V79fZxQTljIFVVV"];
+
+    // [Optional] Track statistics around application opens.
+    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
 
     return YES;
 }
