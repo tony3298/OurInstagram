@@ -381,12 +381,13 @@
         <!--Item-->
         <scene sceneID="YaX-7V-nZ1">
             <objects>
-                <viewController id="H20-iW-pLR" sceneMemberID="viewController">
+                <viewController id="H20-iW-pLR" customClass="LoginViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="b0X-I1-qAn"/>
                         <viewControllerLayoutGuide type="bottom" id="70U-DB-Xz8"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="f1y-LD-J3Y">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="i9Y-Vn-MlA">
@@ -413,6 +414,9 @@
                                 <variation key="widthClass=compact" fixedFrame="YES">
                                     <rect key="frame" x="176" y="351" width="49" height="30"/>
                                 </variation>
+                                <connections>
+                                    <action selector="onSignupTapped:" destination="H20-iW-pLR" eventType="touchUpInside" id="PWC-8Z-z6M"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ef9-ce-OUB">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -422,6 +426,9 @@
                                 <variation key="widthClass=compact" fixedFrame="YES">
                                     <rect key="frame" x="181" y="318" width="38" height="30"/>
                                 </variation>
+                                <connections>
+                                    <action selector="onLoginTapped:" destination="H20-iW-pLR" eventType="touchUpInside" id="bZF-IX-yk8"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -443,6 +450,12 @@
                         </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="952-GU-Uxe"/>
+                    <connections>
+                        <outlet property="loginButton" destination="ef9-ce-OUB" id="hec-Ho-hdn"/>
+                        <outlet property="passwordTextField" destination="q0E-Ge-k0S" id="gUd-pq-0Jm"/>
+                        <outlet property="signupButton" destination="Xeq-QA-XZq" id="rTM-0h-krj"/>
+                        <outlet property="usernameTextField" destination="i9Y-Vn-MlA" id="dWB-uY-vdF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ExP-qp-KMg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -31,10 +31,13 @@
     int i = 0;
 
     for (UITabBarItem *item in self.tabBar.items) {
-        
-        item.image = [self imageWithImage:tabBarItemImages[i] scaledToSize:CGSizeMake(30, 30)];
-        item.imageInsets = UIEdgeInsetsMake(6, 0, -6, 0);
-        i++;
+
+        if (i < 5) {
+
+            item.image = [self imageWithImage:tabBarItemImages[i] scaledToSize:CGSizeMake(30, 30)];
+            item.imageInsets = UIEdgeInsetsMake(6, 0, -6, 0);
+            i++;
+        }
     }
 
     [self createCenterCameraButton];
