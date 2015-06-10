@@ -40,8 +40,7 @@
 
     NSLog(@"%@", searchController.searchBar.text);
 
-
-
+    
 }
 
 
