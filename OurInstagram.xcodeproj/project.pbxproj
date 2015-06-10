@@ -162,29 +162,10 @@
 		475A58561B26318400C39938 = {
 			isa = PBXGroup;
 			children = (
-				477F65DC1B28C971009BFFD6 /* AVFoundation.framework */,
-				475A58611B26318400C39938 /* OurInstagram */,
-				7E55A4C21B28B99200C041CB /* libsqlite3.dylib */,
-				7E55A4C01B28B98700C041CB /* libz.dylib */,
-				7E55A4BE1B28B97A00C041CB /* SystemConfiguration.framework */,
-				7E55A4BC1B28B96900C041CB /* StoreKit.framework */,
-				7E55A4BA1B28B93A00C041CB /* Security.framework */,
-				7E55A4B81B28B92F00C041CB /* QuartzCore.framework */,
-				7E55A4B61B28B92700C041CB /* MobileCoreServices.framework */,
-				7E55A4B41B28B91E00C041CB /* CoreLocation.framework */,
-				7E55A4B21B28B91500C041CB /* CoreGraphics.framework */,
-				7E55A4B01B28B90800C041CB /* CFNetwork.framework */,
-				7E55A4AE1B28B8FF00C041CB /* AudioToolbox.framework */,
-				7E55A4A21B28B88200C041CB /* Bolts.framework */,
-				7E55A4A31B28B88200C041CB /* Parse.framework */,
-				7E55A4A41B28B88200C041CB /* ParseCrashReporting.framework */,
-				7E55A4A51B28B88200C041CB /* ParseFacebookUtils.framework */,
-				7E55A4A61B28B88200C041CB /* ParseFacebookUtilsV4.framework */,
-				7E55A4A71B28B88200C041CB /* ParseUI.framework */,
 				475A58611B26318400C39938 /* OurInstagram */,
 				475A587E1B26318400C39938 /* OurInstagramTests */,
 				475A58601B26318400C39938 /* Products */,
-				9AEF2EE21B28E9FC00ACE55F /* Frameworks */,
+				9AEF2EF01B28FAC300ACE55F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -268,12 +249,27 @@
 			name = Fonts;
 			sourceTree = "<group>";
 		};
-		9AEF2EE21B28E9FC00ACE55F /* Frameworks */ = {
+		9AEF2EE31B28EA1900ACE55F /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9AEF2EE41B28EA2F00ACE55F /* User.h */,
+				9AEF2EE51B28EA2F00ACE55F /* User.m */,
+				9AEF2EE71B28EA3C00ACE55F /* Post.h */,
+				9AEF2EE81B28EA3C00ACE55F /* Post.m */,
+				9AEF2EEA1B28EA4600ACE55F /* Comment.h */,
+				9AEF2EEB1B28EA4600ACE55F /* Comment.m */,
+				9AEF2EED1B28EA5800ACE55F /* Like.h */,
+				9AEF2EEE1B28EA5800ACE55F /* Like.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		9AEF2EF01B28FAC300ACE55F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				477F65DC1B28C971009BFFD6 /* AVFoundation.framework */,
 				7E55A4C21B28B99200C041CB /* libsqlite3.dylib */,
 				7E55A4C01B28B98700C041CB /* libz.dylib */,
-				7E55A4A71B28B88200C041CB /* ParseUI.framework */,
 				7E55A4BE1B28B97A00C041CB /* SystemConfiguration.framework */,
 				7E55A4BC1B28B96900C041CB /* StoreKit.framework */,
 				7E55A4BA1B28B93A00C041CB /* Security.framework */,
@@ -288,23 +284,9 @@
 				7E55A4A41B28B88200C041CB /* ParseCrashReporting.framework */,
 				7E55A4A51B28B88200C041CB /* ParseFacebookUtils.framework */,
 				7E55A4A61B28B88200C041CB /* ParseFacebookUtilsV4.framework */,
+				7E55A4A71B28B88200C041CB /* ParseUI.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		9AEF2EE31B28EA1900ACE55F /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				9AEF2EE41B28EA2F00ACE55F /* User.h */,
-				9AEF2EE51B28EA2F00ACE55F /* User.m */,
-				9AEF2EE71B28EA3C00ACE55F /* Post.h */,
-				9AEF2EE81B28EA3C00ACE55F /* Post.m */,
-				9AEF2EEA1B28EA4600ACE55F /* Comment.h */,
-				9AEF2EEB1B28EA4600ACE55F /* Comment.m */,
-				9AEF2EED1B28EA5800ACE55F /* Like.h */,
-				9AEF2EEE1B28EA5800ACE55F /* Like.m */,
-			);
-			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
