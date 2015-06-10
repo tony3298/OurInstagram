@@ -82,6 +82,12 @@
     NSLog(@"%d", self.searchController.view.hidden);
     NSLog(@"Alpha: %f", self.searchController.view.alpha);
     self.searchController.view.hidden = NO;
+
+    //Prevents searchController from disappearing
+    if ([searchText isEqualToString:@""])
+    {
+        [self presentSearchController:self.searchController];
+    }
 }
 
 -(void)searchBarTextDidEndEditing:(UISearchBar *)searchBar {
