@@ -22,6 +22,10 @@
 		477F659C1B2771FB009BFFD6 /* billabong.otf in Resources */ = {isa = PBXBuildFile; fileRef = 477F659B1B2771FB009BFFD6 /* billabong.otf */; };
 		477F659F1B277D94009BFFD6 /* TakePhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 477F659E1B277D94009BFFD6 /* TakePhotoViewController.m */; };
 		477F65A21B27956D009BFFD6 /* SearchResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 477F65A11B27956D009BFFD6 /* SearchResultsViewController.m */; };
+		477F65D51B28BFB5009BFFD6 /* CameraView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 477F65D41B28BFB5009BFFD6 /* CameraView.xib */; };
+		477F65DB1B28C083009BFFD6 /* CameraView.m in Sources */ = {isa = PBXBuildFile; fileRef = 477F65DA1B28C083009BFFD6 /* CameraView.m */; };
+		477F65DD1B28C971009BFFD6 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 477F65DC1B28C971009BFFD6 /* AVFoundation.framework */; };
+		477F65E01B28E356009BFFD6 /* EditProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 477F65DF1B28E356009BFFD6 /* EditProfileViewController.m */; };
 		7E55A4A11B28AC3600C041CB /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E55A4A01B28AC3600C041CB /* LoginViewController.m */; };
 		7E55A4A81B28B88200C041CB /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E55A4A21B28B88200C041CB /* Bolts.framework */; };
 		7E55A4A91B28B88200C041CB /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E55A4A31B28B88200C041CB /* Parse.framework */; };
@@ -80,6 +84,12 @@
 		477F659E1B277D94009BFFD6 /* TakePhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TakePhotoViewController.m; sourceTree = "<group>"; };
 		477F65A01B27956D009BFFD6 /* SearchResultsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultsViewController.h; sourceTree = "<group>"; };
 		477F65A11B27956D009BFFD6 /* SearchResultsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultsViewController.m; sourceTree = "<group>"; };
+		477F65D41B28BFB5009BFFD6 /* CameraView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CameraView.xib; sourceTree = "<group>"; };
+		477F65D91B28C083009BFFD6 /* CameraView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraView.h; sourceTree = "<group>"; };
+		477F65DA1B28C083009BFFD6 /* CameraView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraView.m; sourceTree = "<group>"; };
+		477F65DC1B28C971009BFFD6 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		477F65DE1B28E356009BFFD6 /* EditProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditProfileViewController.h; sourceTree = "<group>"; };
+		477F65DF1B28E356009BFFD6 /* EditProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditProfileViewController.m; sourceTree = "<group>"; };
 		7E55A49F1B28AC3600C041CB /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		7E55A4A01B28AC3600C041CB /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		7E55A4A21B28B88200C041CB /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
@@ -106,6 +116,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				477F65DD1B28C971009BFFD6 /* AVFoundation.framework in Frameworks */,
 				7E55A4C31B28B99200C041CB /* libsqlite3.dylib in Frameworks */,
 				7E55A4C11B28B98700C041CB /* libz.dylib in Frameworks */,
 				7E55A4BF1B28B97A00C041CB /* SystemConfiguration.framework in Frameworks */,
@@ -139,6 +150,8 @@
 		475A58561B26318400C39938 = {
 			isa = PBXGroup;
 			children = (
+				477F65DC1B28C971009BFFD6 /* AVFoundation.framework */,
+				475A58611B26318400C39938 /* OurInstagram */,
 				7E55A4C21B28B99200C041CB /* libsqlite3.dylib */,
 				7E55A4C01B28B98700C041CB /* libz.dylib */,
 				7E55A4BE1B28B97A00C041CB /* SystemConfiguration.framework */,
@@ -156,7 +169,6 @@
 				7E55A4A51B28B88200C041CB /* ParseFacebookUtils.framework */,
 				7E55A4A61B28B88200C041CB /* ParseFacebookUtilsV4.framework */,
 				7E55A4A71B28B88200C041CB /* ParseUI.framework */,
-				475A58611B26318400C39938 /* OurInstagram */,
 				475A587E1B26318400C39938 /* OurInstagramTests */,
 				475A58601B26318400C39938 /* Products */,
 			);
@@ -190,9 +202,14 @@
 				477F65951B274B86009BFFD6 /* ActivityViewController.m */,
 				477F65911B274B61009BFFD6 /* ProfileViewController.h */,
 				477F65921B274B61009BFFD6 /* ProfileViewController.m */,
+				477F65DE1B28E356009BFFD6 /* EditProfileViewController.h */,
+				477F65DF1B28E356009BFFD6 /* EditProfileViewController.m */,
 				7E55A49F1B28AC3600C041CB /* LoginViewController.h */,
 				7E55A4A01B28AC3600C041CB /* LoginViewController.m */,
 				475A586F1B26318400C39938 /* Main.storyboard */,
+				477F65D91B28C083009BFFD6 /* CameraView.h */,
+				477F65DA1B28C083009BFFD6 /* CameraView.m */,
+				477F65D41B28BFB5009BFFD6 /* CameraView.xib */,
 				477F659A1B2771E3009BFFD6 /* Fonts */,
 				475A58721B26318400C39938 /* Images.xcassets */,
 				475A58741B26318400C39938 /* LaunchScreen.xib */,
@@ -285,6 +302,7 @@
 				TargetAttributes = {
 					475A585E1B26318400C39938 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = G5BQ3HT6JC;
 					};
 					475A587A1B26318400C39938 = {
 						CreatedOnToolsVersion = 6.3.1;
@@ -318,6 +336,7 @@
 			files = (
 				475A58711B26318400C39938 /* Main.storyboard in Resources */,
 				475A58761B26318400C39938 /* LaunchScreen.xib in Resources */,
+				477F65D51B28BFB5009BFFD6 /* CameraView.xib in Resources */,
 				477F659C1B2771FB009BFFD6 /* billabong.otf in Resources */,
 				475A58731B26318400C39938 /* Images.xcassets in Resources */,
 			);
@@ -345,9 +364,11 @@
 				475A58651B26318400C39938 /* main.m in Sources */,
 				475A588D1B263FD000C39938 /* SearchViewController.m in Sources */,
 				470A40BF1B272B8900780A05 /* TabBarController.m in Sources */,
+				477F65E01B28E356009BFFD6 /* EditProfileViewController.m in Sources */,
 				477F65961B274B86009BFFD6 /* ActivityViewController.m in Sources */,
 				7E55A4A11B28AC3600C041CB /* LoginViewController.m in Sources */,
 				475A586B1B26318400C39938 /* OurInstagram.xcdatamodeld in Sources */,
+				477F65DB1B28C083009BFFD6 /* CameraView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -473,6 +494,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -480,6 +503,7 @@
 				INFOPLIST_FILE = OurInstagram/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -487,6 +511,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -494,6 +520,7 @@
 				INFOPLIST_FILE = OurInstagram/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

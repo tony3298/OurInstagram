@@ -10,4 +10,6 @@
 
 @interface TakePhotoViewController : UIViewController
 
+@property BOOL creatingPost;
+
 @end

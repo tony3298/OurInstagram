@@ -7,6 +7,8 @@
 //
 
 #import "TabBarController.h"
+//#import "TakePhotoViewController.h"
+#import "CameraView.h"
 
 @interface TabBarController ()
 
@@ -62,7 +64,29 @@
 
 -(void)cameraView {
 
-    [self setSelectedIndex:2];
+    CameraView *cameraView = [[[NSBundle mainBundle] loadNibNamed:@"CameraView" owner:self options:nil] objectAtIndex:0];
+
+    cameraView.frame = self.view.frame;
+    cameraView.center = self.view.center;
+
+
+    cameraView.frame = CGRectMake(0, cameraView.frame.size.height, cameraView.frame.size.width, cameraView.frame.size.height);
+
+
+    [self.view addSubview:cameraView];
+
+    [UIView animateWithDuration:0.3
+                     animations:^{
+                         cameraView.center = self.view.center;
+                     } completion:^(BOOL finished) {
+
+                         [[UIApplication sharedApplication] setStatusBarHidden:YES];
+                     }];
+//    TakePhotoViewController *takePhotoVC = self.viewControllers[2];
+//    takePhotoVC.creatingPost = YES;
+
+//    [self setSelectedIndex:2];
+
 }
 
 - (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize {

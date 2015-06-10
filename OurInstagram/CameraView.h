@@ -7,7 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AVFoundation/AVFoundation.h>
 
 @interface CameraView : UIView
 
+@property UIImagePickerController *pickerReference;
+
+@property (weak, nonatomic) IBOutlet UIView *frameForCapture;
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UIButton *captureButton;
+
+- (IBAction)takePhoto:(UIButton *)sender;
+
+- (IBAction)dissmissView:(UIButton *)sender;
 @end

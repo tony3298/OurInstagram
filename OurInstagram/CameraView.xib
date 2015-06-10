@@ -1,15 +1,168 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UIView"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB">
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CameraView">
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hju-K0-OHf">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wg8-gf-5ld">
+                            <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                            <state key="normal">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <variation key="widthClass=compact" fixedFrame="YES">
+                                <rect key="frame" x="75" y="80" width="256" height="203"/>
+                            </variation>
+                            <connections>
+                                <action selector="takePhoto:" destination="iN0-l3-epB" eventType="touchUpInside" id="ec0-Uj-KJ4"/>
+                            </connections>
+                        </button>
+                        <view alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EOL-9f-aaO">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            <subviews>
+                                <button opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d1A-pY-lxL">
+                                    <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                    <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="26"/>
+                                    <state key="normal" title="X">
+                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <variation key="widthClass=compact" fixedFrame="YES">
+                                        <rect key="frame" x="8" y="2" width="39" height="39"/>
+                                    </variation>
+                                    <connections>
+                                        <action selector="dissmissView:" destination="iN0-l3-epB" eventType="touchUpInside" id="T53-mz-aeH"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="33" id="uZZ-ic-ifQ">
+                                    <variation key="widthClass=compact" constant="44"/>
+                                </constraint>
+                            </constraints>
+                            <variation key="default">
+                                <mask key="subviews">
+                                    <exclude reference="d1A-pY-lxL"/>
+                                </mask>
+                                <mask key="constraints">
+                                    <exclude reference="uZZ-ic-ifQ"/>
+                                </mask>
+                            </variation>
+                            <variation key="widthClass=compact">
+                                <mask key="subviews">
+                                    <include reference="d1A-pY-lxL"/>
+                                </mask>
+                                <mask key="constraints">
+                                    <include reference="uZZ-ic-ifQ"/>
+                                </mask>
+                            </variation>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="EOL-9f-aaO" firstAttribute="top" secondItem="hju-K0-OHf" secondAttribute="top" id="HXC-kn-WhI"/>
+                        <constraint firstAttribute="height" constant="347" id="NGs-gn-qF6"/>
+                        <constraint firstItem="EOL-9f-aaO" firstAttribute="leading" secondItem="hju-K0-OHf" secondAttribute="leading" id="Os4-jC-anC"/>
+                        <constraint firstAttribute="trailing" secondItem="EOL-9f-aaO" secondAttribute="trailing" id="t1v-aS-JZg"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="subviews">
+                            <exclude reference="wg8-gf-5ld"/>
+                            <exclude reference="EOL-9f-aaO"/>
+                        </mask>
+                        <mask key="constraints">
+                            <exclude reference="NGs-gn-qF6"/>
+                            <exclude reference="HXC-kn-WhI"/>
+                            <exclude reference="Os4-jC-anC"/>
+                            <exclude reference="t1v-aS-JZg"/>
+                        </mask>
+                    </variation>
+                    <variation key="widthClass=compact">
+                        <mask key="subviews">
+                            <include reference="wg8-gf-5ld"/>
+                            <include reference="EOL-9f-aaO"/>
+                        </mask>
+                        <mask key="constraints">
+                            <include reference="NGs-gn-qF6"/>
+                            <include reference="HXC-kn-WhI"/>
+                            <include reference="Os4-jC-anC"/>
+                            <include reference="t1v-aS-JZg"/>
+                        </mask>
+                    </variation>
+                </view>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0i9-zf-pJA">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="80" id="Can-oF-qOB"/>
+                        <constraint firstAttribute="width" constant="80" id="eG1-Wd-QSl"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="5"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="Can-oF-qOB"/>
+                            <exclude reference="eG1-Wd-QSl"/>
+                        </mask>
+                    </variation>
+                    <variation key="widthClass=compact">
+                        <mask key="constraints">
+                            <include reference="Can-oF-qOB"/>
+                            <include reference="eG1-Wd-QSl"/>
+                        </mask>
+                    </variation>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="hju-K0-OHf" secondAttribute="trailing" id="2EL-tQ-sht"/>
+                <constraint firstAttribute="bottom" secondItem="0i9-zf-pJA" secondAttribute="bottom" constant="68" id="eDD-O5-YE1"/>
+                <constraint firstItem="hju-K0-OHf" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="f3y-PT-cKp"/>
+                <constraint firstItem="hju-K0-OHf" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="k0q-ME-ZlP"/>
+                <constraint firstItem="0i9-zf-pJA" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="30" id="ljV-7p-slS"/>
+            </constraints>
+            <variation key="default">
+                <mask key="subviews">
+                    <exclude reference="hju-K0-OHf"/>
+                    <exclude reference="0i9-zf-pJA"/>
+                </mask>
+                <mask key="constraints">
+                    <exclude reference="2EL-tQ-sht"/>
+                    <exclude reference="f3y-PT-cKp"/>
+                    <exclude reference="k0q-ME-ZlP"/>
+                    <exclude reference="eDD-O5-YE1"/>
+                    <exclude reference="ljV-7p-slS"/>
+                </mask>
+            </variation>
+            <variation key="widthClass=compact">
+                <mask key="subviews">
+                    <include reference="hju-K0-OHf"/>
+                    <include reference="0i9-zf-pJA"/>
+                </mask>
+                <mask key="constraints">
+                    <include reference="2EL-tQ-sht"/>
+                    <include reference="f3y-PT-cKp"/>
+                    <include reference="k0q-ME-ZlP"/>
+                    <include reference="eDD-O5-YE1"/>
+                    <include reference="ljV-7p-slS"/>
+                </mask>
+            </variation>
+            <connections>
+                <outlet property="captureButton" destination="wg8-gf-5ld" id="D75-ze-Cd9"/>
+                <outlet property="frameForCapture" destination="hju-K0-OHf" id="nFd-mk-di0"/>
+                <outlet property="imageView" destination="0i9-zf-pJA" id="rvs-3g-TiZ"/>
+            </connections>
         </view>
     </objects>
 </document>
