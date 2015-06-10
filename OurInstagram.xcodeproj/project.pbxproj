@@ -22,6 +22,7 @@
 		477F659C1B2771FB009BFFD6 /* billabong.otf in Resources */ = {isa = PBXBuildFile; fileRef = 477F659B1B2771FB009BFFD6 /* billabong.otf */; };
 		477F659F1B277D94009BFFD6 /* TakePhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 477F659E1B277D94009BFFD6 /* TakePhotoViewController.m */; };
 		477F65A21B27956D009BFFD6 /* SearchResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 477F65A11B27956D009BFFD6 /* SearchResultsViewController.m */; };
+		7E55A4A11B28AC3600C041CB /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E55A4A01B28AC3600C041CB /* LoginViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,8 @@
 		477F659E1B277D94009BFFD6 /* TakePhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TakePhotoViewController.m; sourceTree = "<group>"; };
 		477F65A01B27956D009BFFD6 /* SearchResultsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultsViewController.h; sourceTree = "<group>"; };
 		477F65A11B27956D009BFFD6 /* SearchResultsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultsViewController.m; sourceTree = "<group>"; };
+		7E55A49F1B28AC3600C041CB /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		7E55A4A01B28AC3600C041CB /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +122,8 @@
 				477F65951B274B86009BFFD6 /* ActivityViewController.m */,
 				477F65911B274B61009BFFD6 /* ProfileViewController.h */,
 				477F65921B274B61009BFFD6 /* ProfileViewController.m */,
+				7E55A49F1B28AC3600C041CB /* LoginViewController.h */,
+				7E55A4A01B28AC3600C041CB /* LoginViewController.m */,
 				475A586F1B26318400C39938 /* Main.storyboard */,
 				477F659A1B2771E3009BFFD6 /* Fonts */,
 				475A58721B26318400C39938 /* Images.xcassets */,
@@ -273,6 +278,7 @@
 				475A588D1B263FD000C39938 /* SearchViewController.m in Sources */,
 				470A40BF1B272B8900780A05 /* TabBarController.m in Sources */,
 				477F65961B274B86009BFFD6 /* ActivityViewController.m in Sources */,
+				7E55A4A11B28AC3600C041CB /* LoginViewController.m in Sources */,
 				475A586B1B26318400C39938 /* OurInstagram.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
