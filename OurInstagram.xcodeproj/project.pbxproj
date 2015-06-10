@@ -7,15 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		470A40BF1B272B8900780A05 /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 470A40BE1B272B8900780A05 /* TabBarController.m */; };
 		475A58651B26318400C39938 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 475A58641B26318400C39938 /* main.m */; };
 		475A58681B26318400C39938 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 475A58671B26318400C39938 /* AppDelegate.m */; };
 		475A586B1B26318400C39938 /* OurInstagram.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 475A58691B26318400C39938 /* OurInstagram.xcdatamodeld */; };
-		475A586E1B26318400C39938 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 475A586D1B26318400C39938 /* ViewController.m */; };
 		475A58711B26318400C39938 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 475A586F1B26318400C39938 /* Main.storyboard */; };
 		475A58731B26318400C39938 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 475A58721B26318400C39938 /* Images.xcassets */; };
 		475A58761B26318400C39938 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 475A58741B26318400C39938 /* LaunchScreen.xib */; };
 		475A58821B26318400C39938 /* OurInstagramTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 475A58811B26318400C39938 /* OurInstagramTests.m */; };
 		475A588D1B263FD000C39938 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 475A588C1B263FD000C39938 /* SearchViewController.m */; };
+		477F65931B274B61009BFFD6 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 477F65921B274B61009BFFD6 /* ProfileViewController.m */; };
+		477F65961B274B86009BFFD6 /* ActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 477F65951B274B86009BFFD6 /* ActivityViewController.m */; };
+		477F65991B274BA6009BFFD6 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 477F65981B274BA6009BFFD6 /* HomeViewController.m */; };
+		477F659C1B2771FB009BFFD6 /* billabong.otf in Resources */ = {isa = PBXBuildFile; fileRef = 477F659B1B2771FB009BFFD6 /* billabong.otf */; };
+		477F659F1B277D94009BFFD6 /* TakePhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 477F659E1B277D94009BFFD6 /* TakePhotoViewController.m */; };
+		477F65A21B27956D009BFFD6 /* SearchResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 477F65A11B27956D009BFFD6 /* SearchResultsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,14 +35,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		470A40BD1B272B8900780A05 /* TabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarController.h; sourceTree = "<group>"; };
+		470A40BE1B272B8900780A05 /* TabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarController.m; sourceTree = "<group>"; };
 		475A585F1B26318400C39938 /* OurInstagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OurInstagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		475A58631B26318400C39938 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		475A58641B26318400C39938 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		475A58661B26318400C39938 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		475A58671B26318400C39938 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		475A586A1B26318400C39938 /* OurInstagram.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = OurInstagram.xcdatamodel; sourceTree = "<group>"; };
-		475A586C1B26318400C39938 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		475A586D1B26318400C39938 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		475A58701B26318400C39938 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		475A58721B26318400C39938 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		475A58751B26318400C39938 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -45,6 +51,17 @@
 		475A58811B26318400C39938 /* OurInstagramTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OurInstagramTests.m; sourceTree = "<group>"; };
 		475A588B1B263FD000C39938 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		475A588C1B263FD000C39938 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
+		477F65911B274B61009BFFD6 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		477F65921B274B61009BFFD6 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
+		477F65941B274B86009BFFD6 /* ActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityViewController.h; sourceTree = "<group>"; };
+		477F65951B274B86009BFFD6 /* ActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityViewController.m; sourceTree = "<group>"; };
+		477F65971B274BA6009BFFD6 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		477F65981B274BA6009BFFD6 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		477F659B1B2771FB009BFFD6 /* billabong.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = billabong.otf; sourceTree = "<group>"; };
+		477F659D1B277D94009BFFD6 /* TakePhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TakePhotoViewController.h; sourceTree = "<group>"; };
+		477F659E1B277D94009BFFD6 /* TakePhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TakePhotoViewController.m; sourceTree = "<group>"; };
+		477F65A01B27956D009BFFD6 /* SearchResultsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultsViewController.h; sourceTree = "<group>"; };
+		477F65A11B27956D009BFFD6 /* SearchResultsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,11 +105,22 @@
 			children = (
 				475A58661B26318400C39938 /* AppDelegate.h */,
 				475A58671B26318400C39938 /* AppDelegate.m */,
-				475A586C1B26318400C39938 /* ViewController.h */,
-				475A586D1B26318400C39938 /* ViewController.m */,
-				475A586F1B26318400C39938 /* Main.storyboard */,
+				470A40BD1B272B8900780A05 /* TabBarController.h */,
+				470A40BE1B272B8900780A05 /* TabBarController.m */,
+				477F65971B274BA6009BFFD6 /* HomeViewController.h */,
+				477F65981B274BA6009BFFD6 /* HomeViewController.m */,
 				475A588B1B263FD000C39938 /* SearchViewController.h */,
 				475A588C1B263FD000C39938 /* SearchViewController.m */,
+				477F65A01B27956D009BFFD6 /* SearchResultsViewController.h */,
+				477F65A11B27956D009BFFD6 /* SearchResultsViewController.m */,
+				477F659E1B277D94009BFFD6 /* TakePhotoViewController.m */,
+				477F659D1B277D94009BFFD6 /* TakePhotoViewController.h */,
+				477F65941B274B86009BFFD6 /* ActivityViewController.h */,
+				477F65951B274B86009BFFD6 /* ActivityViewController.m */,
+				477F65911B274B61009BFFD6 /* ProfileViewController.h */,
+				477F65921B274B61009BFFD6 /* ProfileViewController.m */,
+				475A586F1B26318400C39938 /* Main.storyboard */,
+				477F659A1B2771E3009BFFD6 /* Fonts */,
 				475A58721B26318400C39938 /* Images.xcassets */,
 				475A58741B26318400C39938 /* LaunchScreen.xib */,
 				475A58691B26318400C39938 /* OurInstagram.xcdatamodeld */,
@@ -125,6 +153,14 @@
 				475A58801B26318400C39938 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		477F659A1B2771E3009BFFD6 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				477F659B1B2771FB009BFFD6 /* billabong.otf */,
+			);
+			name = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -209,6 +245,7 @@
 			files = (
 				475A58711B26318400C39938 /* Main.storyboard in Resources */,
 				475A58761B26318400C39938 /* LaunchScreen.xib in Resources */,
+				477F659C1B2771FB009BFFD6 /* billabong.otf in Resources */,
 				475A58731B26318400C39938 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -227,10 +264,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				477F659F1B277D94009BFFD6 /* TakePhotoViewController.m in Sources */,
+				477F65A21B27956D009BFFD6 /* SearchResultsViewController.m in Sources */,
 				475A58681B26318400C39938 /* AppDelegate.m in Sources */,
+				477F65931B274B61009BFFD6 /* ProfileViewController.m in Sources */,
+				477F65991B274BA6009BFFD6 /* HomeViewController.m in Sources */,
 				475A58651B26318400C39938 /* main.m in Sources */,
 				475A588D1B263FD000C39938 /* SearchViewController.m in Sources */,
-				475A586E1B26318400C39938 /* ViewController.m in Sources */,
+				470A40BF1B272B8900780A05 /* TabBarController.m in Sources */,
+				477F65961B274B86009BFFD6 /* ActivityViewController.m in Sources */,
 				475A586B1B26318400C39938 /* OurInstagram.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -426,6 +468,7 @@
 				475A58871B26318400C39938 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		475A58881B26318400C39938 /* Build configuration list for PBXNativeTarget "OurInstagramTests" */ = {
 			isa = XCConfigurationList;
@@ -434,6 +477,7 @@
 				475A588A1B26318400C39938 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

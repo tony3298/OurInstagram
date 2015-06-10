@@ -17,6 +17,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+
+//    UIImage *blackbackground = [UIImage imageNamed:@"blackbackground"];
+//    [[UITabBar appearance] setSelectionIndicatorImage:blackbackground];
+
     return YES;
 }
 

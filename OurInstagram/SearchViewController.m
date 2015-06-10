@@ -7,9 +7,16 @@
 //
 
 #import "SearchViewController.h"
+#import "SearchResultsViewController.h"
 
-@interface SearchViewController ()
+@interface SearchViewController () <UISearchControllerDelegate, UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate>
 
+@property SearchResultsViewController *searchResultsViewController;
+@property UISearchController *searchController;
+
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 @end
 
 @implementation SearchViewController
@@ -17,22 +24,112 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-//    self.navigationItem.titleView = s
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    self.searchResultsViewController = [storyboard instantiateViewControllerWithIdentifier:@"SearchResultsViewController"];
+
+    self.searchController = [[UISearchController alloc] initWithSearchResultsController:self.searchResultsViewController];
+
+    self.searchController.searchResultsUpdater = self.searchResultsViewController;
+    self.searchController.delegate = self;
+    self.searchController.searchBar.delegate = self;
+    self.searchController.dimsBackgroundDuringPresentation = false;
+    self.searchController.hidesNavigationBarDuringPresentation = false;
+    self.navigationItem.titleView = self.searchController.searchBar;
+    self.definesPresentationContext = YES;
+    self.searchController.dimsBackgroundDuringPresentation = YES;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(void)willPresentSearchController:(UISearchController *)searchController {
+
+    NSLog(@"%d", self.searchController.active);
+
+//    self.searchController.active = YES;
+//    searchController.searchResultsController.view.hidden = NO;
+
+//    dispatch_async(dispatch_get_main_queue(), ^{
+//        searchController.searchResultsController.view.hidden = NO;
+//    });
 }
 
-/*
-#pragma mark - Navigation
+-(void)didPresentSearchController:(UISearchController *)searchController {
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    NSLog(@"%d", self.searchController.active);
+
+//    searchController.searchResultsController.view.hidden = NO;
 }
-*/
+
+-(void)presentSearchController:(UISearchController *)searchController {
+
+    NSLog(@"Present search controller");
+        dispatch_async(dispatch_get_main_queue(), ^{
+            searchController.searchResultsController.view.hidden = NO;
+        });
+}
+
+-(void)willDismissSearchController:(UISearchController *)searchController {
+
+    NSLog(@"Will dismiss");
+}
+
+-(void)didDismissSearchController:(UISearchController *)searchController {
+
+    NSLog(@"Did dismiss");
+}
+
+-(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+
+    NSLog(@"Text changed");
+    NSLog(@"%d", self.searchController.view.hidden);
+    NSLog(@"Alpha: %f", self.searchController.view.alpha);
+    self.searchController.view.hidden = NO;
+}
+
+-(void)searchBarTextDidEndEditing:(UISearchBar *)searchBar {
+
+    NSLog(@"Editing ended");
+}
+
+//-(void)updateSearchResultsForSearchController:(UISearchController *)searchController {
+//
+//    NSLog(@"TEST");
+//    
+//}
+
+-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+
+    return 3;
+}
+
+-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CellID" forIndexPath:indexPath];
+
+    return cell;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 1;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CellID"];
+
+    cell.textLabel.text = @"Test";
+    return cell;
+}
+
+- (IBAction)photosOrPeople:(UISegmentedControl *)sender {
+
+    if (sender.selectedSegmentIndex == 0) {
+
+        self.collectionView.hidden = NO;
+        self.tableView.hidden = YES;
+    } else {
+
+        self.collectionView.hidden = YES;
+        self.tableView.hidden = NO;
+    }
+}
 
 @end
