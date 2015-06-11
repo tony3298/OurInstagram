@@ -38,22 +38,19 @@
                 [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
 
                     if (data == nil) {
-                        NSLog(@"data nil");
+                        NSLog(@"Failed to download post image.");
                     }
                     UIImage *image = [UIImage imageWithData:data];
-
-                    NSLog(@"%@", image);
+                    NSLog(@"Post Image: %@", image);
 
                     [self.posts addObject:image];
                     NSLog(@"%lu", self.posts.count);
                     [self.tableView reloadData];
-
                 }];
             }
 
-            NSLog(@"Reloading Tableview");
+            NSLog(@"Tableview reloaded.");
             [self.tableView reloadData];
-
         } else {
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
