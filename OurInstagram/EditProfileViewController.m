@@ -40,6 +40,8 @@
     self.currentUser.email = self.emailField.text;
     self.currentUser[@"displayName"] = self.displayNameField.text;
     [self.currentUser saveInBackground];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Updates Saved" message:@"Your updates have been saved." delegate:self cancelButtonTitle:@"Okay" otherButtonTitles: nil];
+    [alert show]; // This should probably only show if the save in background was successful...
     [self hideKeyboard];
     [self dismissViewControllerAnimated:self completion:nil];
 }

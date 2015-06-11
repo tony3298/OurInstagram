@@ -46,7 +46,6 @@
 
 - (void)userSignUp {
 
-    NSLog(@"SIGNING UP USER");
     // Simulating Sign Up
     PFUser *user = [PFUser user];
     user.username = self.usernameTextField.text;
