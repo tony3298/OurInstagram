@@ -11,6 +11,11 @@
 @interface ProfileViewController ()
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *settingsBarButton;
+@property (weak, nonatomic) IBOutlet UILabel *displayNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *bioLabel;
+@property (weak, nonatomic) IBOutlet UILabel *userUrlLabel;
+
 @end
 
 @implementation ProfileViewController
