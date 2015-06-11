@@ -26,38 +26,6 @@
     // Get posts from friends(following) and currentUser.
     self.posts = [[NSMutableArray alloc] init];
 
-    PFQuery *userPostsQuery = [PFQuery queryWithClassName:@"Post"];
-    [userPostsQuery whereKey:@"user" equalTo:[PFUser currentUser]];
-    [userPostsQuery findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
-        if (!error) {
-            NSLog(@"Successfully retrieved %lu posts.", posts.count);
-
-            for (PFObject *post in posts) {
-
-                PFFile *imageFile = post[@"image"];
-                [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
-
-                    if (data == nil) {
-                        NSLog(@"data nil");
-                    } else {
-                        UIImage *image = [UIImage imageWithData:data];
-
-                        NSLog(@"%@", image);
-
-                        [self.posts addObject:image];
-                        NSLog(@"%lu", self.posts.count);
-                        [self.tableView reloadData];
-                    }
-                }];
-            }
-
-            NSLog(@"Tableview reloaded.");
-            [self.tableView reloadData];
-        } else {
-            NSLog(@"Error: %@ %@", error, [error userInfo]);
-        }
-    }];
-
 //    NSArray *friends = self.currentUser[@"friends"];
 //    for (PFObject *friend in friends) {
 //        [self.posts addObject:friend[@"post"]];
@@ -69,6 +37,46 @@
     // ...
 
     self.navigationController.navigationBar.titleTextAttributes = @{NSFontAttributeName: [UIFont fontWithName:@"Billabong" size:30], NSForegroundColorAttributeName: [UIColor whiteColor]};
+}
+
+-(void)viewDidAppear:(BOOL)animated {
+    [self fetchUserPosts];
+}
+
+-(void)fetchUserPosts {
+    if ([PFUser currentUser]) {
+        PFQuery *userPostsQuery = [PFQuery queryWithClassName:@"Post"];
+        [userPostsQuery whereKey:@"user" equalTo:[PFUser currentUser]];
+        [userPostsQuery findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
+            if (!error) {
+                NSLog(@"Successfully retrieved %lu posts.", posts.count);
+
+                for (PFObject *post in posts) {
+
+                    PFFile *imageFile = post[@"image"];
+                    [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+
+                        if (data == nil) {
+                            NSLog(@"data nil");
+                        } else {
+                            UIImage *image = [UIImage imageWithData:data];
+
+                            NSLog(@"%@", image);
+
+                            [self.posts addObject:image];
+                            NSLog(@"%lu", self.posts.count);
+                            [self.tableView reloadData];
+                        }
+                    }];
+                }
+
+                NSLog(@"Tableview reloaded.");
+                [self.tableView reloadData];
+            } else {
+                NSLog(@"Error: %@ %@", error, [error userInfo]);
+            }
+        }];
+    }
 }
 
 -(void)bringUpLoginViewController {
