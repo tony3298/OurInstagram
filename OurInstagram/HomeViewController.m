@@ -8,18 +8,31 @@
 
 #import "HomeViewController.h"
 #import <Parse/Parse.h>
+#import <UIKit/UIKit.h>
 #import "LoginViewController.h"
+#import "Post.h"
 
-@interface HomeViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
-
+@interface HomeViewController () <UITableViewDataSource, UITableViewDelegate>
 @property PFUser *currentUser;
-
+@property NSMutableArray *posts;
 @end
 
 @implementation HomeViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    // Get posts from friends(following) and currentUser.
+    self.posts = [[NSMutableArray alloc] init];
+    NSArray *friends = self.currentUser[@"friends"];
+    for (PFObject *friend in friends) {
+        [self.posts addObject:friend[@"post"]];
+    }
+    NSMutableArray *userPosts = self.currentUser[@"posts"];
+    [self.posts addObjectsFromArray:userPosts];
+
+    // Sort self.posts ?
+    // ...
 
     self.currentUser = [PFUser currentUser];
     if (self.currentUser == nil) {
@@ -32,21 +45,27 @@
         NSLog(@"Current user exists, current user is: %@", self.currentUser.username);
         NSLog(@"Current userId: %@", [self.currentUser objectId]);
         NSLog(@"Current user email: %@", self.currentUser[@"email"]);
+        self.posts = self.currentUser[@"posts"]; // Only grabbing posts from current user. Need to grab posts from every person user is following also.
     }
-
     self.navigationController.navigationBar.titleTextAttributes = @{NSFontAttributeName: [UIFont fontWithName:@"Billabong" size:30], NSForegroundColorAttributeName: [UIColor whiteColor]};
-
-//    [[UINavigationBar appearance] setTitleTextAttributes: @{NSForegroundColorAttributeName: [UIColor whiteColor]}];
-
 }
 
--(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 1;
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+
+    return self.posts.count;
 }
 
--(UICollectionViewCell * )collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CellID" forIndexPath:indexPath];
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CellID"];
+
+    PFObject *post = [self.posts objectAtIndex:indexPath.row];
+    PFFile *imageFile = post[@"image"];
+    NSArray *comments = post[@"comments"];
+    NSArray *likes = post[@"likes"];
+
     return cell;
 }
+
 
 @end

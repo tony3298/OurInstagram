@@ -104,17 +104,14 @@ AVCaptureStillImageOutput *stillImageOutput;
         for (AVCaptureInputPort *port in [connection inputPorts]) {
 
             if ([[port mediaType] isEqual:AVMediaTypeVideo]) {
-
                 videoConnection = connection;
                 break;
             }
-
             if (videoConnection) {
                 break;
             }
         }
     }
-
     [stillImageOutput captureStillImageAsynchronouslyFromConnection:videoConnection completionHandler:^(CMSampleBufferRef imageDataSampleBuffer, NSError *error) {
         if (imageDataSampleBuffer != nil) {
             NSData *data = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageDataSampleBuffer];
@@ -122,16 +119,14 @@ AVCaptureStillImageOutput *stillImageOutput;
             self.imageView.layer.cornerRadius = 10.0;
             self.imageView.clipsToBounds = YES;
             self.imageView.image = image;
-
             self.currentUser = [PFUser currentUser];
             if (self.currentUser == nil) {
                 NSLog(@"No current user, loading login screen.");
-
             } else {
                 NSLog(@"Current user exists, current user is: %@", self.currentUser.username);
                 NSLog(@"Current userId: %@", [self.currentUser objectId]);
                 NSLog(@"Current user email: %@", self.currentUser[@"email"]);
-
+                
                 NSData *imageData = UIImageJPEGRepresentation(image, 0.6);
                 PFFile *imageFile = [PFFile fileWithName:@"image.jpeg" data:imageData];
                 [imageFile saveInBackground];
@@ -150,15 +145,11 @@ AVCaptureStillImageOutput *stillImageOutput;
                     if (error) {
                         NSLog(@"%@", error);
                     }
-                    
                     if (succeeded) {
                         NSLog(@"succeeded");
                     }
                 }];
             }
-
-            UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
-
         }
     }];
 }
