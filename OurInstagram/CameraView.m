@@ -123,6 +123,27 @@ AVCaptureStillImageOutput *stillImageOutput;
             self.imageView.clipsToBounds = YES;
             self.imageView.image = image;
 
+            self.currentUser = [PFUser currentUser];
+            if (self.currentUser == nil) {
+                NSLog(@"No current user, loading login screen.");
+
+            } else {
+                NSLog(@"Current user exists, current user is: %@", self.currentUser.username);
+                NSLog(@"Current userId: %@", [self.currentUser objectId]);
+                NSLog(@"Current user email: %@", self.currentUser[@"email"]);
+
+                PFObject *post = [[PFObject alloc] initWithClassName:@"Post"];
+                post[@"user"] = self.currentUser;
+                post[@"image"] = image;
+                [post saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+
+
+                    if (succeeded) {
+                        NSLog(@"succeeded");
+                    }
+                }];
+            }
+
             UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
 
         }
