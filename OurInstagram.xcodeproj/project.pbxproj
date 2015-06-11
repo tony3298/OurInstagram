@@ -26,6 +26,7 @@
 		477F65DB1B28C083009BFFD6 /* CameraView.m in Sources */ = {isa = PBXBuildFile; fileRef = 477F65DA1B28C083009BFFD6 /* CameraView.m */; };
 		477F65DD1B28C971009BFFD6 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 477F65DC1B28C971009BFFD6 /* AVFoundation.framework */; };
 		477F65E01B28E356009BFFD6 /* EditProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 477F65DF1B28E356009BFFD6 /* EditProfileViewController.m */; };
+		477F65F01B2A1B52009BFFD6 /* FeedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 477F65EF1B2A1B52009BFFD6 /* FeedTableViewCell.m */; };
 		7E55A4A11B28AC3600C041CB /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E55A4A01B28AC3600C041CB /* LoginViewController.m */; };
 		7E55A4A81B28B88200C041CB /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E55A4A21B28B88200C041CB /* Bolts.framework */; };
 		7E55A4A91B28B88200C041CB /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E55A4A31B28B88200C041CB /* Parse.framework */; };
@@ -94,6 +95,8 @@
 		477F65DC1B28C971009BFFD6 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		477F65DE1B28E356009BFFD6 /* EditProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditProfileViewController.h; sourceTree = "<group>"; };
 		477F65DF1B28E356009BFFD6 /* EditProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditProfileViewController.m; sourceTree = "<group>"; };
+		477F65EE1B2A1B52009BFFD6 /* FeedTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedTableViewCell.h; sourceTree = "<group>"; };
+		477F65EF1B2A1B52009BFFD6 /* FeedTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedTableViewCell.m; sourceTree = "<group>"; };
 		7E55A49F1B28AC3600C041CB /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		7E55A4A01B28AC3600C041CB /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		7E55A4A21B28B88200C041CB /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
@@ -189,6 +192,8 @@
 				7E55A4A01B28AC3600C041CB /* LoginViewController.m */,
 				477F65971B274BA6009BFFD6 /* HomeViewController.h */,
 				477F65981B274BA6009BFFD6 /* HomeViewController.m */,
+				477F65EE1B2A1B52009BFFD6 /* FeedTableViewCell.h */,
+				477F65EF1B2A1B52009BFFD6 /* FeedTableViewCell.m */,
 				475A588B1B263FD000C39938 /* SearchViewController.h */,
 				475A588C1B263FD000C39938 /* SearchViewController.m */,
 				477F65A01B27956D009BFFD6 /* SearchResultsViewController.h */,
@@ -393,6 +398,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9AEF2EE91B28EA3C00ACE55F /* Post.m in Sources */,
+				477F65F01B2A1B52009BFFD6 /* FeedTableViewCell.m in Sources */,
 				477F659F1B277D94009BFFD6 /* TakePhotoViewController.m in Sources */,
 				477F65A21B27956D009BFFD6 /* SearchResultsViewController.m in Sources */,
 				475A58681B26318400C39938 /* AppDelegate.m in Sources */,

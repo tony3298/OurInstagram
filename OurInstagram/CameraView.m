@@ -126,10 +126,25 @@ AVCaptureStillImageOutput *stillImageOutput;
                 NSLog(@"Current user exists, current user is: %@", self.currentUser.username);
                 NSLog(@"Current userId: %@", [self.currentUser objectId]);
                 NSLog(@"Current user email: %@", self.currentUser[@"email"]);
-                PFObject *post = [[PFObject alloc] initWithClassName:@"Post"];
-                post[@"user"] = self.currentUser;
-                post[@"image"] = image;
+                
+                NSData *imageData = UIImageJPEGRepresentation(image, 0.6);
+                PFFile *imageFile = [PFFile fileWithName:@"image.jpeg" data:imageData];
+                [imageFile saveInBackground];
+
+//                PFUser *user = [PFUser currentUser];
+//                [user setObject:imageFile forKey:@"profilePic"];
+//                [user saveInBackground];
+
+                PFObject *post = [PFObject objectWithClassName:@"Post"];
+                [post setObject:self.currentUser forKey:@"user"];
+
+                [post setObject:imageFile forKey:@"image"];
+
                 [post saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+
+                    if (error) {
+                        NSLog(@"%@", error);
+                    }
                     if (succeeded) {
                         NSLog(@"succeeded");
                     }

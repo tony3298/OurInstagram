@@ -12,7 +12,7 @@
 #import "LoginViewController.h"
 #import "Post.h"
 
-@interface HomeViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
+@interface HomeViewController () <UITableViewDataSource, UITableViewDelegate>
 @property PFUser *currentUser;
 @property NSMutableArray *posts;
 @end
@@ -65,14 +65,15 @@
     self.navigationController.navigationBar.titleTextAttributes = @{NSFontAttributeName: [UIFont fontWithName:@"Billabong" size:30], NSForegroundColorAttributeName: [UIColor whiteColor]};
 }
 
--(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+
     return self.posts.count;
 }
 
--(UICollectionViewCell * )collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CellID" forIndexPath:indexPath];
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
-    // For each post, grab image, comments, and likes.
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CellID"];
+
     PFObject *post = [self.posts objectAtIndex:indexPath.row];
     PFFile *imageFile = post[@"image"];
     NSArray *comments = post[@"comments"];
@@ -80,5 +81,6 @@
 
     return cell;
 }
+
 
 @end
