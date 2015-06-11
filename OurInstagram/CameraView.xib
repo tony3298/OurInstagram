@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
     </dependencies>
@@ -138,11 +138,11 @@
                     <exclude reference="0i9-zf-pJA"/>
                 </mask>
                 <mask key="constraints">
+                    <exclude reference="eDD-O5-YE1"/>
+                    <exclude reference="ljV-7p-slS"/>
                     <exclude reference="2EL-tQ-sht"/>
                     <exclude reference="f3y-PT-cKp"/>
                     <exclude reference="k0q-ME-ZlP"/>
-                    <exclude reference="eDD-O5-YE1"/>
-                    <exclude reference="ljV-7p-slS"/>
                 </mask>
             </variation>
             <variation key="widthClass=compact">
@@ -151,11 +151,11 @@
                     <include reference="0i9-zf-pJA"/>
                 </mask>
                 <mask key="constraints">
+                    <include reference="eDD-O5-YE1"/>
+                    <include reference="ljV-7p-slS"/>
                     <include reference="2EL-tQ-sht"/>
                     <include reference="f3y-PT-cKp"/>
                     <include reference="k0q-ME-ZlP"/>
-                    <include reference="eDD-O5-YE1"/>
-                    <include reference="ljV-7p-slS"/>
                 </mask>
             </variation>
             <connections>
