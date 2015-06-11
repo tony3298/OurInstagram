@@ -22,9 +22,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    // Get posts from friends(following) and currentUser.
     self.posts = [[NSMutableArray alloc] init];
+    self.navigationController.navigationBar.titleTextAttributes = @{NSFontAttributeName: [UIFont fontWithName:@"Billabong" size:30], NSForegroundColorAttributeName: [UIColor whiteColor]};
 
 //    NSArray *friends = self.currentUser[@"friends"];
 //    for (PFObject *friend in friends) {
@@ -32,24 +31,17 @@
 //    }
 //    NSMutableArray *userPosts = self.currentUser[@"posts"];
 //    [self.posts addObjectsFromArray:userPosts];
-
-    self.navigationController.navigationBar.titleTextAttributes = @{NSFontAttributeName: [UIFont fontWithName:@"Billabong" size:30], NSForegroundColorAttributeName: [UIColor whiteColor]};
 }
 
 -(void)viewDidAppear:(BOOL)animated {
-
     NSLog(@"In home view controller");
-
     if ([PFUser currentUser] == nil) {
         [self bringUpLoginViewController];
     }
-
     [self fetchUserPosts];
-
 }
 
 -(void)fetchUserPosts {
-
     [self.posts removeAllObjects];
 
     if ([PFUser currentUser]) {
@@ -67,7 +59,6 @@
                         } else {
                             UIImage *image = [UIImage imageWithData:data];
                             NSLog(@"Image results: %@", image);
-
                             [self.posts addObject:image];
                             NSLog(@"%lu", self.posts.count);
                             [self.tableView reloadData];
@@ -90,14 +81,12 @@
     [self presentViewController:loginVC animated:YES completion:nil];
 }
 
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.posts.count;
 }
 
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CellID"];
-
     cell.imageView.image = self.posts[indexPath.row];
     cell.textLabel.text = @"Tony";
 
