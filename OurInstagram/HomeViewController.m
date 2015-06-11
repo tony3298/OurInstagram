@@ -33,9 +33,6 @@
 //    NSMutableArray *userPosts = self.currentUser[@"posts"];
 //    [self.posts addObjectsFromArray:userPosts];
 
-    // Sort self.posts ?
-    // ...
-
     self.navigationController.navigationBar.titleTextAttributes = @{NSFontAttributeName: [UIFont fontWithName:@"Billabong" size:30], NSForegroundColorAttributeName: [UIColor whiteColor]};
 }
 
@@ -63,16 +60,13 @@
                 NSLog(@"Successfully retrieved %lu posts.", posts.count);
 
                 for (PFObject *post in posts) {
-
                     PFFile *imageFile = post[@"image"];
                     [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
-
                         if (data == nil) {
-                            NSLog(@"data nil");
+                            NSLog(@"Failed to load image data.");
                         } else {
                             UIImage *image = [UIImage imageWithData:data];
-
-                            NSLog(@"%@", image);
+                            NSLog(@"Image results: %@", image);
 
                             [self.posts addObject:image];
                             NSLog(@"%lu", self.posts.count);
@@ -80,7 +74,6 @@
                         }
                     }];
                 }
-
                 NSLog(@"Tableview reloaded.");
                 [self.tableView reloadData];
             } else {
@@ -91,14 +84,11 @@
 }
 
 -(void)bringUpLoginViewController {
-
-        NSLog(@"No current user, loading login screen.");
-
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
-        LoginViewController *loginVC = (LoginViewController*)[storyboard instantiateViewControllerWithIdentifier: @"LoginViewController"];
-        [self presentViewController:loginVC animated:YES completion:nil];
+    NSLog(@"No current user, loading login screen.");
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
+    LoginViewController *loginVC = (LoginViewController*)[storyboard instantiateViewControllerWithIdentifier: @"LoginViewController"];
+    [self presentViewController:loginVC animated:YES completion:nil];
 }
-
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.posts.count;
@@ -113,5 +103,4 @@
 
     return cell;
 }
-
 @end
