@@ -30,6 +30,7 @@
         NSLog(@"Current user exists, current user is: %@", self.currentUser.username);
         NSLog(@"Current userId: %@", [self.currentUser objectId]);
         NSLog(@"Current user email: %@", self.currentUser[@"email"]);
+        self.currentUser[@"bio"] = @"CAN EDIT HERE"; // does not work
     }
 
 //    for (NSString* family in [UIFont familyNames]) {
@@ -47,14 +48,11 @@
 }
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-
     return 1;
 }
 
 -(UICollectionViewCell * )collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CellID" forIndexPath:indexPath];
-
     return cell;
 }
 

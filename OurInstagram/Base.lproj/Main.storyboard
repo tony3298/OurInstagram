@@ -956,10 +956,10 @@
                             <mask key="constraints">
                                 <exclude reference="VVc-wS-0uj"/>
                                 <exclude reference="W4l-tv-KtV"/>
-                                <exclude reference="R8n-FG-tiK"/>
-                                <exclude reference="j6Z-D0-lgq"/>
                                 <exclude reference="JZi-vt-J4t"/>
                                 <exclude reference="sw6-p3-D7O"/>
+                                <exclude reference="R8n-FG-tiK"/>
+                                <exclude reference="j6Z-D0-lgq"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -973,10 +973,10 @@
                             <mask key="constraints">
                                 <include reference="VVc-wS-0uj"/>
                                 <include reference="W4l-tv-KtV"/>
-                                <include reference="R8n-FG-tiK"/>
-                                <include reference="j6Z-D0-lgq"/>
                                 <include reference="JZi-vt-J4t"/>
                                 <include reference="sw6-p3-D7O"/>
+                                <include reference="R8n-FG-tiK"/>
+                                <include reference="j6Z-D0-lgq"/>
                             </mask>
                         </variation>
                     </view>

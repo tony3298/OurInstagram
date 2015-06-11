@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 Tony Dakhoul. All rights reserved.
 //
 
+#import <Parse/Parse.h>
 #import "EditProfileViewController.h"
 
 @interface EditProfileViewController ()
@@ -16,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *emailField;
 @property (weak, nonatomic) IBOutlet UITextField *phoneField;
 @property (weak, nonatomic) IBOutlet UITextField *genderField;
+@property PFUser *currentUser;
 
 @end
 
@@ -23,7 +25,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.currentUser = [PFUser currentUser];
 }
 
 - (IBAction)onSaveTapped:(UIBarButtonItem *)sender {
