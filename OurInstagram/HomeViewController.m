@@ -24,6 +24,21 @@
 
     // Get posts from friends(following) and currentUser.
     self.posts = [[NSMutableArray alloc] init];
+
+    PFQuery *userPostsQuery = [PFQuery queryWithClassName:@"Post"];
+    [userPostsQuery whereKey:@"user" equalTo:[PFUser currentUser]];
+    [userPostsQuery findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
+        if (!error) {
+            NSLog(@"Successfully retrieved %d posts.", posts.count);
+            for (PFObject *post in posts) {
+                PFUser *user = post[@"user"];
+                NSLog(@"Post from %@", user[@"username"]);
+            }
+        } else {
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
+
     NSArray *friends = self.currentUser[@"friends"];
     for (PFObject *friend in friends) {
         [self.posts addObject:friend[@"post"]];
