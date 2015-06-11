@@ -29,11 +29,19 @@
     [userPostsQuery whereKey:@"user" equalTo:[PFUser currentUser]];
     [userPostsQuery findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
         if (!error) {
-            NSLog(@"Successfully retrieved %d posts.", posts.count);
+            NSLog(@"Successfully retrieved %lu posts.", posts.count);
+
             for (PFObject *post in posts) {
-                PFUser *user = post[@"user"];
-                NSLog(@"Post from %@", user[@"username"]);
+//                PFUser *user = post[@"user"];
+//                NSLog(@"Post from %@", user[@"username"]);
+                PFFile *imageFile = post[@"image"];
+                [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+                    UIImage *image = [UIImage imageWithData:data];
+
+                    [self.posts addObject:image];
+                }];
             }
+
         } else {
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
@@ -73,10 +81,11 @@
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CellID" forIndexPath:indexPath];
 
     // For each post, grab image, comments, and likes.
-    PFObject *post = [self.posts objectAtIndex:indexPath.row];
-    PFFile *imageFile = post[@"image"];
-    NSArray *comments = post[@"comments"];
-    NSArray *likes = post[@"likes"];
+//    PFObject *post = [self.posts objectAtIndex:indexPath.row];
+//    PFFile *imageFile = post[@"image"];
+//    NSArray *comments = post[@"comments"];
+//    NSArray *likes = post[@"likes"];
+
 
     return cell;
 }
