@@ -23,12 +23,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self userSignUp];
-
-    PFUser *currentUser = [PFUser currentUser];
-    if (currentUser != nil) { //Don't show sign up button if user is already signed up
-        self.signupButton.alpha = 0;
-    }
 
     PFObject *testObject = [PFObject objectWithClassName:@"TestObject"];
     testObject[@"foo"] = @"bar";
@@ -36,31 +30,8 @@
 
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     if ([userDefaults objectForKey:@"currentUser"] == nil) {
-        //sign up / login
-
-
-    } else {
-        //set up current user and pass to each view
+        
     }
-}
-
-- (void)userSignUp {
-
-    // Simulating Sign Up
-    PFUser *user = [PFUser user];
-    user.username = self.usernameTextField.text;
-    user.email = self.emailTextField.text;
-    user.password = self.passwordTextField.text;
-
-    [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        if (!error) {
-            PFUser *currentUser = [PFUser currentUser];
-            NSLog(@"Signed up %@, who has a userID of %@", currentUser.username,currentUser[@"objectID"]);
-        } else {   NSString *errorString = [error userInfo][@"error"];   // Show the errorString somewhere and let the user try again.
-            NSLog(@"Error signing up user: %@", errorString);
-        }
-    }];
-
 }
 
 - (void) userLogOut {
@@ -70,9 +41,44 @@
 }
 
 - (IBAction)onLoginTapped:(UIButton *)sender {
+    [self userLogIn];
 }
 
 - (IBAction)onSignupTapped:(UIButton *)sender {
     [self userSignUp];
+}
+
+-(void)userSignUp {
+    PFUser *user = [PFUser new];
+    user.username = self.usernameTextField.text;
+    user.email = self.usernameTextField.text;
+    user.password = self.passwordTextField.text;
+
+    [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (!error) {
+            [self dismissViewControllerAnimated:true completion:nil];
+        } else {
+            [self showAlert:@"Signup error" param2:error];
+        }
+    }];
+}
+
+-(void)userLogIn {
+    [PFUser logInWithUsernameInBackground:self.usernameTextField.text password:self.passwordTextField.text block:^(PFUser *user, NSError *error) {
+        if (!error) {
+            [self dismissViewControllerAnimated:true completion:nil];
+        } else {
+            [self showAlert:@"Login error" param2:error];
+        }
+    }];
+}
+
+-(void)showAlert:(NSString *)message param2:(NSError *)error {
+    UIAlertView *alert = [UIAlertView new];
+    alert.title = message;
+    alert.message = [error localizedDescription];
+    [alert addButtonWithTitle:@"Dismiss"];
+    alert.delegate = self;
+    [alert show];
 }
 @end
