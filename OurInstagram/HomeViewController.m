@@ -26,35 +26,41 @@
     // Get posts from friends(following) and currentUser.
     self.posts = [[NSMutableArray alloc] init];
 
-    PFQuery *userPostsQuery = [PFQuery queryWithClassName:@"Post"];
-    [userPostsQuery whereKey:@"user" equalTo:[PFUser currentUser]];
-    [userPostsQuery findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
-        if (!error) {
-            NSLog(@"Successfully retrieved %lu posts.", posts.count);
+    self.currentUser = [PFUser currentUser];
 
-            for (PFObject *post in posts) {
+    if (self.currentUser != nil) {
+        PFQuery *userPostsQuery = [PFQuery queryWithClassName:@"Post"];
+        [userPostsQuery whereKey:@"user" equalTo:[PFUser currentUser]];
+        [userPostsQuery findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
+            if (!error) {
+                NSLog(@"Successfully retrieved %lu posts.", posts.count);
 
-                PFFile *imageFile = post[@"image"];
-                [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+                for (PFObject *post in posts) {
 
-                    if (data == nil) {
-                        NSLog(@"Failed to download post image.");
-                    }
-                    UIImage *image = [UIImage imageWithData:data];
-                    NSLog(@"Post Image: %@", image);
+                    PFFile *imageFile = post[@"image"];
+                    [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
 
-                    [self.posts addObject:image];
-                    NSLog(@"%lu", self.posts.count);
-                    [self.tableView reloadData];
-                }];
+                        if (data == nil) {
+                            NSLog(@"Failed to download post image.");
+                        }
+                        UIImage *image = [UIImage imageWithData:data];
+                        NSLog(@"Post Image: %@", image);
+
+                        [self.posts addObject:image];
+                        NSLog(@"%lu", self.posts.count);
+                        [self.tableView reloadData];
+                    }];
+                }
+
+                NSLog(@"Tableview reloaded.");
+                [self.tableView reloadData];
+            } else {
+                NSLog(@"Error: %@ %@", error, [error userInfo]);
             }
+        }];
+    }
 
-            NSLog(@"Tableview reloaded.");
-            [self.tableView reloadData];
-        } else {
-            NSLog(@"Error: %@ %@", error, [error userInfo]);
-        }
-    }];
+
 
 //    NSArray *friends = self.currentUser[@"friends"];
 //    for (PFObject *friend in friends) {
