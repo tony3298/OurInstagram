@@ -104,17 +104,14 @@ AVCaptureStillImageOutput *stillImageOutput;
         for (AVCaptureInputPort *port in [connection inputPorts]) {
 
             if ([[port mediaType] isEqual:AVMediaTypeVideo]) {
-
                 videoConnection = connection;
                 break;
             }
-
             if (videoConnection) {
                 break;
             }
         }
     }
-
     [stillImageOutput captureStillImageAsynchronouslyFromConnection:videoConnection completionHandler:^(CMSampleBufferRef imageDataSampleBuffer, NSError *error) {
         if (imageDataSampleBuffer != nil) {
             NSData *data = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageDataSampleBuffer];
@@ -122,9 +119,7 @@ AVCaptureStillImageOutput *stillImageOutput;
             self.imageView.layer.cornerRadius = 10.0;
             self.imageView.clipsToBounds = YES;
             self.imageView.image = image;
-
             UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
-
         }
     }];
 }
