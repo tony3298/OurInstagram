@@ -48,13 +48,11 @@
                         NSLog(@"%lu", self.posts.count);
                         [self.tableView reloadData];
                     }
-
                 }];
             }
 
-            NSLog(@"Reloading Tableview");
+            NSLog(@"Tableview reloaded.");
             [self.tableView reloadData];
-
         } else {
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
