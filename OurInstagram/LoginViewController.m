@@ -29,8 +29,36 @@
 }
 
 - (IBAction)onLoginTapped:(UIButton *)sender {
+    [PFUser logInWithUsernameInBackground:self.usernameTextField.text password:self.passwordTextField.text block:^(PFUser *user, NSError *error) {
+        if (!error) {
+            [self dismissViewControllerAnimated:true completion:nil];
+        } else {
+            [self showAlert:@"Login error" param2:error];
+        }
+    }];
 }
 
 - (IBAction)onSignupTapped:(UIButton *)sender {
+    PFUser *user = [PFUser new];
+    user.username = self.usernameTextField.text;
+    user.email = self.usernameTextField.text;
+    user.password = self.passwordTextField.text;
+
+    [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (!error) {
+            [self dismissViewControllerAnimated:true completion:nil];
+        } else {
+            [self showAlert:@"Signup error" param2:error];
+        }
+    }];
+}
+
+-(void)showAlert:(NSString *)message param2:(NSError *)error {
+    UIAlertView *alert = [UIAlertView new];
+    alert.title = message;
+    alert.message = [error localizedDescription];
+    [alert addButtonWithTitle:@"Dismiss"];
+    alert.delegate = self;
+    [alert show];
 }
 @end
