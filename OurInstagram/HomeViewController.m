@@ -39,14 +39,15 @@
 
                     if (data == nil) {
                         NSLog(@"data nil");
+                    } else {
+                        UIImage *image = [UIImage imageWithData:data];
+
+                        NSLog(@"%@", image);
+
+                        [self.posts addObject:image];
+                        NSLog(@"%lu", self.posts.count);
+                        [self.tableView reloadData];
                     }
-                    UIImage *image = [UIImage imageWithData:data];
-
-                    NSLog(@"%@", image);
-
-                    [self.posts addObject:image];
-                    NSLog(@"%lu", self.posts.count);
-                    [self.tableView reloadData];
 
                 }];
             }
@@ -69,8 +70,12 @@
     // Sort self.posts ?
     // ...
 
-    self.currentUser = [PFUser currentUser];
-    if (self.currentUser == nil) {
+    self.navigationController.navigationBar.titleTextAttributes = @{NSFontAttributeName: [UIFont fontWithName:@"Billabong" size:30], NSForegroundColorAttributeName: [UIColor whiteColor]};
+}
+
+-(void)bringUpLoginViewController {
+
+    if ([PFUser currentUser]) {
         NSLog(@"No current user, loading login screen.");
 
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
@@ -78,7 +83,6 @@
         [self presentViewController:loginVC animated:YES completion:nil];
     }
 
-    self.navigationController.navigationBar.titleTextAttributes = @{NSFontAttributeName: [UIFont fontWithName:@"Billabong" size:30], NSForegroundColorAttributeName: [UIColor whiteColor]};
 }
 
 
@@ -94,5 +98,18 @@
     cell.textLabel.text = @"Tony";
 
     return cell;
+}
+
+-(IBAction)unwindToHomeViewController:(UIStoryboardSegue *)segue {
+
+    if ([PFUser currentUser]) {
+
+        [PFUser logOut];
+
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
+        LoginViewController *loginVC = (LoginViewController*)[storyboard instantiateViewControllerWithIdentifier: @"LoginViewController"];
+        [self presentViewController:loginVC animated:YES completion:nil];
+
+    }
 }
 @end

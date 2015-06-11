@@ -394,6 +394,11 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Profile" id="exB-IJ-uFU">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="t9m-Hd-TAd">
+                            <connections>
+                                <segue destination="V2o-yq-HRK" kind="unwind" unwindAction="unwindToHomeViewController:" id="B1Q-1j-W6G"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" id="WR9-Nh-87g">
                             <connections>
                                 <segue destination="yK8-HD-0vI" kind="show" id="9Sd-P3-c5x"/>
@@ -410,6 +415,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+                <exit id="V2o-yq-HRK" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2980.5" y="1891"/>
         </scene>
