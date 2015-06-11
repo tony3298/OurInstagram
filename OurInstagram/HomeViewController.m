@@ -40,10 +40,21 @@
 }
 
 -(void)viewDidAppear:(BOOL)animated {
+
+    NSLog(@"In home view controller");
+
+    if ([PFUser currentUser] == nil) {
+        [self bringUpLoginViewController];
+    }
+
     [self fetchUserPosts];
+
 }
 
 -(void)fetchUserPosts {
+
+    [self.posts removeAllObjects];
+
     if ([PFUser currentUser]) {
         PFQuery *userPostsQuery = [PFQuery queryWithClassName:@"Post"];
         [userPostsQuery whereKey:@"user" equalTo:[PFUser currentUser]];
@@ -81,14 +92,11 @@
 
 -(void)bringUpLoginViewController {
 
-    if ([PFUser currentUser]) {
         NSLog(@"No current user, loading login screen.");
 
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
         LoginViewController *loginVC = (LoginViewController*)[storyboard instantiateViewControllerWithIdentifier: @"LoginViewController"];
         [self presentViewController:loginVC animated:YES completion:nil];
-    }
-
 }
 
 

@@ -60,7 +60,7 @@
 //        LoginViewController *loginVC = (LoginViewController*)[storyboard instantiateViewControllerWithIdentifier: @"LoginViewController"];
 //        [self presentViewController:loginVC animated:YES completion:nil];
 
-        self.tabBarController.selectedIndex = 1;
+        self.tabBarController.selectedIndex = 0;
     }
 }
 
