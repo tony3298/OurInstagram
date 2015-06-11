@@ -12,7 +12,8 @@
 #import "LoginViewController.h"
 #import "Post.h"
 
-@interface HomeViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
+@interface HomeViewController () <UITableViewDelegate, UITableViewDataSource>
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property PFUser *currentUser;
 @property NSMutableArray *posts;
 @end
@@ -32,27 +33,38 @@
             NSLog(@"Successfully retrieved %lu posts.", posts.count);
 
             for (PFObject *post in posts) {
-//                PFUser *user = post[@"user"];
-//                NSLog(@"Post from %@", user[@"username"]);
+
                 PFFile *imageFile = post[@"image"];
                 [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+
+                    if (data == nil) {
+                        NSLog(@"data nil");
+                    }
                     UIImage *image = [UIImage imageWithData:data];
 
+                    NSLog(@"%@", image);
+
                     [self.posts addObject:image];
+                    NSLog(@"%lu", self.posts.count);
+                    [self.tableView reloadData];
+
                 }];
             }
+
+            NSLog(@"Reloading Tableview");
+            [self.tableView reloadData];
 
         } else {
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
     }];
 
-    NSArray *friends = self.currentUser[@"friends"];
-    for (PFObject *friend in friends) {
-        [self.posts addObject:friend[@"post"]];
-    }
-    NSMutableArray *userPosts = self.currentUser[@"posts"];
-    [self.posts addObjectsFromArray:userPosts];
+//    NSArray *friends = self.currentUser[@"friends"];
+//    for (PFObject *friend in friends) {
+//        [self.posts addObject:friend[@"post"]];
+//    }
+//    NSMutableArray *userPosts = self.currentUser[@"posts"];
+//    [self.posts addObjectsFromArray:userPosts];
 
     // Sort self.posts ?
     // ...
@@ -60,34 +72,27 @@
     self.currentUser = [PFUser currentUser];
     if (self.currentUser == nil) {
         NSLog(@"No current user, loading login screen.");
-//        LoginViewController *loginVC = [[LoginViewController alloc] init];
+
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
         LoginViewController *loginVC = (LoginViewController*)[storyboard instantiateViewControllerWithIdentifier: @"LoginViewController"];
         [self presentViewController:loginVC animated:YES completion:nil];
-    } else {
-        NSLog(@"Current user exists, current user is: %@", self.currentUser.username);
-        NSLog(@"Current userId: %@", [self.currentUser objectId]);
-        NSLog(@"Current user email: %@", self.currentUser[@"email"]);
-        self.posts = self.currentUser[@"posts"]; // Only grabbing posts from current user. Need to grab posts from every person user is following also.
     }
+
     self.navigationController.navigationBar.titleTextAttributes = @{NSFontAttributeName: [UIFont fontWithName:@"Billabong" size:30], NSForegroundColorAttributeName: [UIColor whiteColor]};
 }
 
--(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.posts.count;
 }
 
--(UICollectionViewCell * )collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CellID" forIndexPath:indexPath];
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
-    // For each post, grab image, comments, and likes.
-//    PFObject *post = [self.posts objectAtIndex:indexPath.row];
-//    PFFile *imageFile = post[@"image"];
-//    NSArray *comments = post[@"comments"];
-//    NSArray *likes = post[@"likes"];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CellID"];
 
+    cell.imageView.image = self.posts[indexPath.row];
+    cell.textLabel.text = @"Tony";
 
     return cell;
 }
-
 @end

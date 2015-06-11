@@ -286,6 +286,10 @@
                                 <variation key="widthClass=compact" fixedFrame="YES">
                                     <rect key="frame" x="0.0" y="0.0" width="400" height="600"/>
                                 </variation>
+                                <connections>
+                                    <outlet property="dataSource" destination="Jgx-iD-Fxm" id="JNc-1q-Acq"/>
+                                    <outlet property="delegate" destination="Jgx-iD-Fxm" id="0G7-AV-6xZ"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -303,6 +307,9 @@
                     <navigationItem key="navigationItem" title="Instagram" id="n1s-MO-9p5">
                         <barButtonItem key="rightBarButtonItem" title="DM" id="Atg-BK-nga"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="reo-ER-IEH" id="URf-3K-rQ5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n5l-aQ-a7Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
