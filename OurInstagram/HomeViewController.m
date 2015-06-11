@@ -51,16 +51,13 @@
                 NSLog(@"Successfully retrieved %lu posts.", posts.count);
 
                 for (PFObject *post in posts) {
-
                     PFFile *imageFile = post[@"image"];
                     [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
-
                         if (data == nil) {
-                            NSLog(@"data nil");
+                            NSLog(@"Failed to load image data.");
                         } else {
                             UIImage *image = [UIImage imageWithData:data];
-
-                            NSLog(@"%@", image);
+                            NSLog(@"Image results: %@", image);
 
                             [self.posts addObject:image];
                             NSLog(@"%lu", self.posts.count);
@@ -68,7 +65,6 @@
                         }
                     }];
                 }
-
                 NSLog(@"Tableview reloaded.");
                 [self.tableView reloadData];
             } else {
