@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
+#import <Parse/Parse.h>
 
 @interface CameraView : UIView
 
@@ -16,6 +17,8 @@
 @property (weak, nonatomic) IBOutlet UIView *frameForCapture;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIButton *captureButton;
+
+@property PFUser *currentUser;
 
 - (IBAction)takePhoto:(UIButton *)sender;
 
