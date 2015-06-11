@@ -98,16 +98,4 @@
     return cell;
 }
 
--(IBAction)unwindToHomeViewController:(UIStoryboardSegue *)segue {
-
-    if ([PFUser currentUser]) {
-
-        [PFUser logOut];
-
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
-        LoginViewController *loginVC = (LoginViewController*)[storyboard instantiateViewControllerWithIdentifier: @"LoginViewController"];
-        [self presentViewController:loginVC animated:YES completion:nil];
-
-    }
-}
 @end

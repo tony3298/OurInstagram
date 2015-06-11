@@ -51,7 +51,7 @@
 -(void)userSignUp {
     PFUser *user = [PFUser new];
     user.username = self.usernameTextField.text;
-    user.email = self.usernameTextField.text;
+    user.email = self.emailTextField.text;
     user.password = self.passwordTextField.text;
 
     [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {

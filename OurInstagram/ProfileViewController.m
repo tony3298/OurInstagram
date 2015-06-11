@@ -48,6 +48,21 @@
     [self updateUserProfileInfo];
 }
 
+- (IBAction)onLogoutTapped:(UIBarButtonItem *)sender {
+
+    if ([PFUser currentUser]) {
+
+        NSLog(@"Logging out");
+
+        [PFUser logOut];
+
+//        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
+//        LoginViewController *loginVC = (LoginViewController*)[storyboard instantiateViewControllerWithIdentifier: @"LoginViewController"];
+//        [self presentViewController:loginVC animated:YES completion:nil];
+
+        self.tabBarController.selectedIndex = 1;
+    }
+}
 
 
 @end
