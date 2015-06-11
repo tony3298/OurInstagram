@@ -29,7 +29,8 @@
     PFUser *currentUser = self.currentUser;
     self.displayNameField.text = currentUser[@"displayName"];
     self.usernameField.text = currentUser[@"username"];
-    self.websiteField.text = currentUser.email;
+    self.websiteField.text = currentUser[@"userURL"];
+    self.emailField.text = currentUser.email;
     self.bioField.text = currentUser[@"bio"];
 }
 
@@ -37,7 +38,7 @@
     self.currentUser.username = self.usernameField.text;
     self.currentUser[@"userURL"] = self.websiteField.text;
     self.currentUser[@"bio"] = self.bioField.text;
-    self.currentUser.email = self.emailField.text;
+    self.currentUser[@"email"] = self.emailField.text;
     self.currentUser[@"displayName"] = self.displayNameField.text;
     [self.currentUser saveInBackground];
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Updates Saved" message:@"Your updates have been saved." delegate:self cancelButtonTitle:@"Okay" otherButtonTitles: nil];

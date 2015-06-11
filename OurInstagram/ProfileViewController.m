@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *bioLabel;
 @property (weak, nonatomic) IBOutlet UILabel *userUrlLabel;
+@property (weak, nonatomic) IBOutlet UILabel *emailLabel;
 @property PFUser *currentUser;
 
 @end
@@ -40,6 +41,7 @@
     self.usernameLabel.text = self.currentUser.username;
     self.bioLabel.text = self.currentUser[@"bio"];
     self.userUrlLabel.text = self.currentUser[@"userURL"];
+    self.emailLabel.text = self.currentUser.email;
 }
 
 -(void)viewDidAppear:(BOOL)animated {

@@ -364,6 +364,15 @@
                                     <rect key="frame" x="16" y="177" width="368" height="21"/>
                                 </variation>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FYG-fu-eFN">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="16" y="206" width="368" height="21"/>
+                                </variation>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <variation key="default">
@@ -372,6 +381,7 @@
                                 <exclude reference="cm0-cP-GIW"/>
                                 <exclude reference="c8m-1k-dpF"/>
                                 <exclude reference="0GE-In-GLW"/>
+                                <exclude reference="FYG-fu-eFN"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -380,6 +390,7 @@
                                 <include reference="cm0-cP-GIW"/>
                                 <include reference="c8m-1k-dpF"/>
                                 <include reference="0GE-In-GLW"/>
+                                <include reference="FYG-fu-eFN"/>
                             </mask>
                         </variation>
                     </view>
@@ -393,6 +404,7 @@
                     <connections>
                         <outlet property="bioLabel" destination="c8m-1k-dpF" id="E3A-N4-6ja"/>
                         <outlet property="displayNameLabel" destination="mfi-1h-pjz" id="ujK-jV-j9x"/>
+                        <outlet property="emailLabel" destination="FYG-fu-eFN" id="MiV-pO-E0D"/>
                         <outlet property="settingsBarButton" destination="WR9-Nh-87g" id="qwL-Wx-gNC"/>
                         <outlet property="userUrlLabel" destination="0GE-In-GLW" id="kdE-QZ-NYA"/>
                         <outlet property="usernameLabel" destination="cm0-cP-GIW" id="9Uj-xA-C76"/>

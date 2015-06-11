@@ -63,6 +63,12 @@
 
 }
 
+- (void) userLogOut {
+    [PFUser logOutInBackground];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Logged Out" message:@"You have logged out." delegate:self cancelButtonTitle:@"Okay" otherButtonTitles: nil];
+    [alert show];
+}
+
 - (IBAction)onLoginTapped:(UIButton *)sender {
 }
 
