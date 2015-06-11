@@ -24,7 +24,9 @@
     self.currentUser = [PFUser currentUser];
     if (self.currentUser == nil) {
         NSLog(@"No current user, loading login screen.");
-        LoginViewController *loginVC = [[LoginViewController alloc] init];
+//        LoginViewController *loginVC = [[LoginViewController alloc] init];
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
+        LoginViewController *loginVC = (LoginViewController*)[storyboard instantiateViewControllerWithIdentifier: @"LoginViewController"];
         [self presentViewController:loginVC animated:YES completion:nil];
     } else {
         NSLog(@"Current user exists, current user is: %@", self.currentUser.username);
