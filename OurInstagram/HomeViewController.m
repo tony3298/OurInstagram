@@ -30,7 +30,8 @@
         NSLog(@"Current user exists, current user is: %@", self.currentUser.username);
         NSLog(@"Current userId: %@", [self.currentUser objectId]);
         NSLog(@"Current user email: %@", self.currentUser[@"email"]);
-        self.currentUser[@"bio"] = @"CAN EDIT HERE"; // does not work
+//        self.currentUser[@"bio"] = @"CAN EDIT HERE";
+//        [self.currentUser saveInBackground]; // works!
     }
 
 //    for (NSString* family in [UIFont familyNames]) {

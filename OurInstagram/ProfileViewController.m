@@ -30,14 +30,20 @@
     NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:f1, NSFontAttributeName, nil];
     [self.settingsBarButton setTitleTextAttributes:dict forState:UIControlStateNormal];
 
-
     self.currentUser = [PFUser currentUser];
+    [self updateUserProfileInfo];
+}
 
+- (void) updateUserProfileInfo {
     // Fill up profile details
     self.displayNameLabel.text = self.currentUser[@"displayName"];
     self.usernameLabel.text = self.currentUser.username;
     self.bioLabel.text = self.currentUser[@"bio"];
     self.userUrlLabel.text = self.currentUser[@"userURL"];
+}
+
+-(void)viewDidAppear:(BOOL)animated {
+    [self updateUserProfileInfo];
 }
 
 @end
