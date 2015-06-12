@@ -27,6 +27,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupForSignUp];
+    self.instagramLogoLabel.alpha = 0.6;
+    self.passwordTextField.secureTextEntry = YES;
     [self.loginButton.layer setCornerRadius:self.loginButton.frame.size.width/5];
     [self.signupButton.layer setCornerRadius:self.signupButton.frame.size.width/5];
     self.instagramLogoLabel.font = [UIFont fontWithName:@"billabong" size:35.0];
