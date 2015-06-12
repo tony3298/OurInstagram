@@ -16,6 +16,7 @@
 @interface HomeViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property PFUser *currentUser;
+
 @property (nonatomic)  NSArray *posts;
 @end
 
@@ -151,8 +152,34 @@
     cell.postImageView.image = post.image;
     cell.postUsernameTextLabel.text = post.user.username;
 
+    [self setProfileImageView:cell.userProfileImageView withImage:[self fetchUserProfileImageFromPost:post]];
+
     return cell;
 }
 
+-(void)setProfileImageView:(UIImageView*)imageView withImage:(UIImage *)image {
 
+    imageView.contentMode = UIViewContentModeScaleAspectFill;
+    imageView.layer.masksToBounds = YES;
+    imageView.layer.cornerRadius = imageView.frame.size.width/2;
+    imageView.image = image;
+}
+
+-(UIImage *)fetchUserProfileImageFromPost:(Post *)post {
+
+    UIImage *image = [UIImage new];
+    PFUser *user = post.user;
+
+    if (user) {
+
+        PFFile *profileImageFile = [user objectForKey:@"profileImage"];
+
+        if (profileImageFile) {
+
+            image = [UIImage imageWithData:[profileImageFile getData]];
+        }
+    }
+
+    return image;
+}
 @end
