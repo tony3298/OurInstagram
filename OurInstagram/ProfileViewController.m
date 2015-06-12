@@ -11,7 +11,7 @@
 #import "Post.h"
 #import <Parse/Parse.h>
 
-@interface ProfileViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
+@interface ProfileViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIAlertViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *postsCollectionView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *settingsBarButton;
@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *numberOfPostsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *numberOfFollowersLabel;
 @property (weak, nonatomic) IBOutlet UILabel *numberFollowingLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
 
 
 @property PFUser *currentUser;
@@ -50,6 +51,33 @@
     [self updateUserProfileInfo];
 
     [self fetchUserPosts];
+    [self fetchUserProfileImage];
+}
+
+-(void)fetchUserProfileImage {
+
+    if ([PFUser currentUser]) {
+
+
+        PFUser *user = [PFUser currentUser];
+
+        PFFile *profileImageFile = [user objectForKey:@"profileImage"];
+
+        if (profileImageFile) {
+
+            [profileImageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+
+                if (!error) {
+
+                    NSLog(@"NO error");
+
+                    UIImage *image = [UIImage imageWithData:data];
+
+                    [self setProfileImageViewImage:image];
+                }
+            }];
+        }
+    }
 }
 
 -(void)fetchUserPosts {
@@ -77,13 +105,10 @@
                                 UIImage *image = [UIImage imageWithData:data];
                                 post.image = image;
 
-                                NSLog(@"YA");
                                 [self.postsCollectionView reloadData];
                             }
                         }];
-                        
-                        NSLog(@"BOO");
-                    }
+                                            }
                     
                     [mutablePosts addObject:post];
                 }
@@ -161,10 +186,97 @@
 
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Add Profile Picture" message:@"Do you want to take a picture or upload a picture?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Upload", @"Take Picture", nil];
 
-
-//    alert.
     [alert show];
     
+}
+
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+
+    if (buttonIndex == 1) {
+        NSLog(@"Upload tapped");
+
+        [self uploadFromPhotoAlbum];
+    } else if (buttonIndex == 2) {
+
+        [self uploadFromCamera];
+    }
+
+}
+
+-(void)uploadFromPhotoAlbum {
+
+    UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+    imagePicker.delegate = self;
+
+    imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+
+    [self presentViewController:imagePicker animated:YES completion:nil];
+
+}
+
+-(void)uploadFromCamera {
+
+    UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+    imagePicker.delegate = self;
+
+    imagePicker.mediaTypes = [UIImagePickerController availableMediaTypesForSourceType:UIImagePickerControllerSourceTypeCamera];
+    imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+
+    [self presentViewController:imagePicker animated:YES completion:nil];
+
+}
+
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+
+    // save photo
+//    NSString *mediaType = [info objectForKey:UIImagePickerControllerMediaType];
+
+
+    UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+
+    if (image) {
+
+        NSData *imageData = UIImageJPEGRepresentation(image, 0.6);
+        PFFile *imageFile = [PFFile fileWithName:@"profileimage.jpeg" data:imageData];
+        [imageFile saveInBackground];
+
+        //                PFUser *user = [PFUser currentUser];
+        //                [user setObject:imageFile forKey:@"profilePic"];
+        //                [user saveInBackground];
+
+        PFUser *user = [PFUser currentUser];
+
+        if (user) {
+
+            [user setObject:imageFile forKey:@"profileImage"];
+
+            [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+
+                if (error) {
+                    NSLog(@"%@", error);
+                }
+                if (succeeded) {
+                    NSLog(@"succeeded");
+                }
+            }];
+        }
+        [self setProfileImageViewImage:image];
+
+        UIImageWriteToSavedPhotosAlbum(image,nil,nil,nil);
+    }
+
+    
+
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(void)setProfileImageViewImage:(UIImage *)image {
+
+    self.profileImageView.contentMode = UIViewContentModeScaleAspectFill;
+    self.profileImageView.layer.masksToBounds = YES;
+    self.profileImageView.layer.cornerRadius = self.profileImageView.frame.size.width/2;
+    self.profileImageView.image = image;
 }
 
 @end
