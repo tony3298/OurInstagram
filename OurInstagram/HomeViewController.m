@@ -27,14 +27,14 @@
     // Get posts from friends(following) and currentUser.
     self.posts = [[NSArray alloc] init];
 
+    self.navigationController.navigationBar.titleTextAttributes = @{NSFontAttributeName: [UIFont fontWithName:@"Billabong" size:30], NSForegroundColorAttributeName: [UIColor whiteColor]};
+
 //    NSArray *friends = self.currentUser[@"friends"];
 //    for (PFObject *friend in friends) {
 //        [self.posts addObject:friend[@"post"]];
 //    }
 //    NSMutableArray *userPosts = self.currentUser[@"posts"];
 //    [self.posts addObjectsFromArray:userPosts];
-
-    self.navigationController.navigationBar.titleTextAttributes = @{NSFontAttributeName: [UIFont fontWithName:@"Billabong" size:30], NSForegroundColorAttributeName: [UIColor whiteColor]};
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -135,7 +135,7 @@
     [self presentViewController:loginVC animated:YES completion:nil];
 }
 
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.posts.count;
 }
 
