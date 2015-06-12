@@ -69,7 +69,7 @@
 
     if ([PFUser currentUser]) {
         PFQuery *userPostsQuery = [PFQuery queryWithClassName:@"Post"];
-        [userPostsQuery orderByAscending:@"createdAt"];
+        [userPostsQuery orderByDescending:@"createdAt"];
 //        [userPostsQuery whereKey:@"user" equalTo:[PFUser currentUser]];
         [userPostsQuery findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
 
