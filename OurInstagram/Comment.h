@@ -7,12 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <Parse/Parse.h>
 
 @interface Comment : NSObject
 
-@property NSString *postID;
+@property PFObject *post;
 @property NSString *commentText;
-@property NSString *authorUserID;
+@property PFUser *user;
 @property NSDate *dateCreated;
+
+-(instancetype)initWithCommentObject:(PFObject *)comment;
 
 @end

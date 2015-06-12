@@ -10,10 +10,17 @@
 
 @implementation Comment
 
--(instancetype)init {
+-(instancetype)initWithCommentObject:(PFObject *)comment {
+
     self = [super init];
 
-    //<#code#>
+    if (self) {
+
+        self.user = comment[@"user"];
+        self.post = comment[@"post"];
+        self.commentText = comment[@"commentText"];
+        self.dateCreated = comment[@"createdAt"];
+    }
 
     return self;
 }

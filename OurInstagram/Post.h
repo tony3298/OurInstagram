@@ -12,8 +12,10 @@
 @interface Post : NSObject
 
 @property PFFile *imagePFFile;
-@property NSString *postID;
-@property NSString *userID;
+@property UIImage *image;
+@property PFUser *user;
 @property NSDate *dateCreated;
+
+-(instancetype)initWithPostObject:(PFObject *)post;
 
 @end

@@ -10,12 +10,13 @@
 #import <Parse/Parse.h>
 #import <UIKit/UIKit.h>
 #import "LoginViewController.h"
+#import "FeedTableViewCell.h"
 #import "Post.h"
 
 @interface HomeViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property PFUser *currentUser;
-@property NSMutableArray *posts;
+@property (nonatomic)  NSArray *posts;
 @end
 
 @implementation HomeViewController
@@ -24,7 +25,7 @@
     [super viewDidLoad];
 
     // Get posts from friends(following) and currentUser.
-    self.posts = [[NSMutableArray alloc] init];
+    self.posts = [[NSArray alloc] init];
 
 //    NSArray *friends = self.currentUser[@"friends"];
 //    for (PFObject *friend in friends) {
@@ -36,46 +37,86 @@
     self.navigationController.navigationBar.titleTextAttributes = @{NSFontAttributeName: [UIFont fontWithName:@"Billabong" size:30], NSForegroundColorAttributeName: [UIColor whiteColor]};
 }
 
--(void)viewDidAppear:(BOOL)animated {
-
-    NSLog(@"In home view controller");
+-(void)viewWillAppear:(BOOL)animated {
 
     if ([PFUser currentUser] == nil) {
         [self bringUpLoginViewController];
     }
 
-    [self fetchUserPosts];
+    [self fetchPostsForFeed];
+}
+
+-(void)viewDidAppear:(BOOL)animated {
+
+    NSLog(@"In home view controller");
+
+//    if ([PFUser currentUser] == nil) {
+//        [self bringUpLoginViewController];
+//    }
+//
+//    [self fetchUserPosts];
 
 }
 
--(void)fetchUserPosts {
+-(void)setPosts:(NSArray *)posts {
 
-    [self.posts removeAllObjects];
+    NSLog(@"In setPosts");
+    _posts = posts;
+    [self.tableView reloadData];
+}
+
+-(void)fetchPostsForFeed {
 
     if ([PFUser currentUser]) {
         PFQuery *userPostsQuery = [PFQuery queryWithClassName:@"Post"];
-        [userPostsQuery whereKey:@"user" equalTo:[PFUser currentUser]];
+        [userPostsQuery orderByAscending:@"createdAt"];
+//        [userPostsQuery whereKey:@"user" equalTo:[PFUser currentUser]];
         [userPostsQuery findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
+
             if (!error) {
                 NSLog(@"Successfully retrieved %lu posts.", posts.count);
 
-                for (PFObject *post in posts) {
-                    PFFile *imageFile = post[@"image"];
-                    [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
-                        if (data == nil) {
-                            NSLog(@"Failed to load image data.");
-                        } else {
-                            UIImage *image = [UIImage imageWithData:data];
-                            NSLog(@"Image results: %@", image);
+                NSMutableArray *mutablePosts = [[NSMutableArray alloc] init];
 
-                            [self.posts addObject:image];
-                            NSLog(@"%lu", self.posts.count);
-                            [self.tableView reloadData];
-                        }
-                    }];
+                for (PFObject *postObject in posts) {
+//                    PFFile *imageFile = post[@"image"];
+//                    [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+//                        if (data == nil) {
+//                            NSLog(@"Failed to load image data.");
+//                        } else {
+//                            UIImage *image = [UIImage imageWithData:data];
+//                            NSLog(@"Image results: %@", image);
+//
+//                            [self.posts addObject:image];
+//                            NSLog(@"%lu", self.posts.count);
+//                            [self.tableView reloadData];
+//                        }
+//                    }];
+
+                    Post *post = [[Post alloc] initWithPostObject:postObject];
+
+                    if (post.imagePFFile) {
+
+                        [post.imagePFFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+
+                            if (!error) {
+                                UIImage *image = [UIImage imageWithData:data];
+                                post.image = image;
+
+                                NSLog(@"YA");
+                                [self.tableView reloadData];
+                            }
+                        }];
+
+                        NSLog(@"BOO");
+                    }
+
+                    [mutablePosts addObject:post];
                 }
-                NSLog(@"Tableview reloaded.");
-                [self.tableView reloadData];
+
+                self.posts = mutablePosts;
+//                NSLog(@"Tableview reloaded.");
+//                [self.tableView reloadData];
             } else {
                 NSLog(@"Error: %@ %@", error, [error userInfo]);
             }
@@ -84,9 +125,13 @@
 }
 
 -(void)bringUpLoginViewController {
+
     NSLog(@"No current user, loading login screen.");
+    
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
+
     LoginViewController *loginVC = (LoginViewController*)[storyboard instantiateViewControllerWithIdentifier: @"LoginViewController"];
+
     [self presentViewController:loginVC animated:YES completion:nil];
 }
 
@@ -96,10 +141,15 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CellID"];
+    FeedTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CellID"];
 
-    cell.imageView.image = self.posts[indexPath.row];
-    cell.textLabel.text = @"Tony";
+    Post *post = self.posts[indexPath.row];
+
+    cell.postImageView.contentMode = UIViewContentModeScaleAspectFill;
+    cell.postImageView.clipsToBounds = YES;
+
+    cell.postImageView.image = post.image;
+    cell.postUsernameTextLabel.text = post.user.username;
 
     return cell;
 }

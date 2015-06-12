@@ -27,6 +27,7 @@
 		477F65DD1B28C971009BFFD6 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 477F65DC1B28C971009BFFD6 /* AVFoundation.framework */; };
 		477F65E01B28E356009BFFD6 /* EditProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 477F65DF1B28E356009BFFD6 /* EditProfileViewController.m */; };
 		477F65F01B2A1B52009BFFD6 /* FeedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 477F65EF1B2A1B52009BFFD6 /* FeedTableViewCell.m */; };
+		47D7CA311B2AAC6600593BBF /* UserPostCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 47D7CA301B2AAC6600593BBF /* UserPostCollectionViewCell.m */; };
 		7E55A4A11B28AC3600C041CB /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E55A4A01B28AC3600C041CB /* LoginViewController.m */; };
 		7E55A4A81B28B88200C041CB /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E55A4A21B28B88200C041CB /* Bolts.framework */; };
 		7E55A4A91B28B88200C041CB /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E55A4A31B28B88200C041CB /* Parse.framework */; };
@@ -97,6 +98,8 @@
 		477F65DF1B28E356009BFFD6 /* EditProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditProfileViewController.m; sourceTree = "<group>"; };
 		477F65EE1B2A1B52009BFFD6 /* FeedTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedTableViewCell.h; sourceTree = "<group>"; };
 		477F65EF1B2A1B52009BFFD6 /* FeedTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedTableViewCell.m; sourceTree = "<group>"; };
+		47D7CA2F1B2AAC6600593BBF /* UserPostCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserPostCollectionViewCell.h; sourceTree = "<group>"; };
+		47D7CA301B2AAC6600593BBF /* UserPostCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserPostCollectionViewCell.m; sourceTree = "<group>"; };
 		7E55A49F1B28AC3600C041CB /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		7E55A4A01B28AC3600C041CB /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		7E55A4A21B28B88200C041CB /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
@@ -206,6 +209,8 @@
 				477F65951B274B86009BFFD6 /* ActivityViewController.m */,
 				477F65911B274B61009BFFD6 /* ProfileViewController.h */,
 				477F65921B274B61009BFFD6 /* ProfileViewController.m */,
+				47D7CA2F1B2AAC6600593BBF /* UserPostCollectionViewCell.h */,
+				47D7CA301B2AAC6600593BBF /* UserPostCollectionViewCell.m */,
 				477F65DE1B28E356009BFFD6 /* EditProfileViewController.h */,
 				477F65DF1B28E356009BFFD6 /* EditProfileViewController.m */,
 				475A586F1B26318400C39938 /* Main.storyboard */,
@@ -341,10 +346,6 @@
 				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = "Tony Dakhoul";
 				TargetAttributes = {
-					475A585E1B26318400C39938 = {
-						CreatedOnToolsVersion = 6.3.1;
-						DevelopmentTeam = N2SGMRCH23;
-					};
 					475A587A1B26318400C39938 = {
 						CreatedOnToolsVersion = 6.3.1;
 						DevelopmentTeam = G5BQ3HT6JC;
@@ -402,6 +403,7 @@
 				477F65F01B2A1B52009BFFD6 /* FeedTableViewCell.m in Sources */,
 				477F659F1B277D94009BFFD6 /* TakePhotoViewController.m in Sources */,
 				477F65A21B27956D009BFFD6 /* SearchResultsViewController.m in Sources */,
+				47D7CA311B2AAC6600593BBF /* UserPostCollectionViewCell.m in Sources */,
 				475A58681B26318400C39938 /* AppDelegate.m in Sources */,
 				477F65931B274B61009BFFD6 /* ProfileViewController.m in Sources */,
 				477F65991B274BA6009BFFD6 /* HomeViewController.m in Sources */,
@@ -544,7 +546,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Tony Dakhoul (A7P858ZWZQ)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -561,7 +563,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Tony Dakhoul (A7P858ZWZQ)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

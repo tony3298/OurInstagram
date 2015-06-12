@@ -10,10 +10,21 @@
 
 @implementation Post
 
--(instancetype)init {
+-(instancetype)initWithPostObject:(PFObject *)post {
+
     self = [super init];
 
-    //<#code#>
+    if (self) {
+
+//        [post fetchIfNeeded];
+        PFUser *user = post[@"user"];
+        [user fetchIfNeeded];
+        self.user = user;
+        self.imagePFFile = post[@"image"];
+        self.dateCreated = post[@"createdAd"];
+
+
+    }
 
     return self;
 }

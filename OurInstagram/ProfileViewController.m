@@ -7,9 +7,10 @@
 //
 
 #import "ProfileViewController.h"
+#import "UserPostCollectionViewCell.h"
 #import <Parse/Parse.h>
 
-@interface ProfileViewController ()
+@interface ProfileViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *settingsBarButton;
 @property (weak, nonatomic) IBOutlet UILabel *displayNameLabel;
@@ -18,6 +19,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *userUrlLabel;
 @property (weak, nonatomic) IBOutlet UILabel *emailLabel;
 @property PFUser *currentUser;
+
+@property NSArray *userPosts;
 
 @end
 
@@ -46,6 +49,23 @@
 
 -(void)viewDidAppear:(BOOL)animated {
     [self updateUserProfileInfo];
+}
+
+-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return self.userPosts.count;
+}
+
+-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+
+    UserPostCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CellID" forIndexPath:indexPath];
+
+    cell.imageView.contentMode = UIViewContentModeScaleAspectFill;
+    cell.imageView.clipsToBounds = YES;
+
+    cell.imageView.image = self.userPosts[indexPath.row];
+
+
+    return cell;
 }
 
 - (IBAction)onLogoutTapped:(UIBarButtonItem *)sender {

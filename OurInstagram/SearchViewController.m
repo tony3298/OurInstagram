@@ -24,6 +24,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    self.collectionView.hidden = NO;
+    self.tableView.hidden = YES;
+
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     self.searchResultsViewController = [storyboard instantiateViewControllerWithIdentifier:@"SearchResultsViewController"];
 

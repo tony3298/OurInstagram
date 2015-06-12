@@ -7,10 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <Parse/Parse.h>
 
 @interface Like : NSObject
 
-@property NSString *userID;
-@property NSString *postID;
+@property PFUser *user;
+@property PFObject *post;
+
+-(instancetype)initWithLikeObject:(PFObject *)like;
 
 @end

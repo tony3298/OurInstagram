@@ -10,10 +10,15 @@
 
 @implementation Like
 
--(instancetype)init {
+-(instancetype)initWithLikeObject:(PFObject *)like {
+
     self = [super init];
 
-    //<#code#>
+    if (self) {
+
+        self.user = like[@"user"];
+        self.post = like[@"post"];
+    }
 
     return self;
 }

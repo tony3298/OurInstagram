@@ -112,6 +112,7 @@ AVCaptureStillImageOutput *stillImageOutput;
             }
         }
     }
+    
     [stillImageOutput captureStillImageAsynchronouslyFromConnection:videoConnection completionHandler:^(CMSampleBufferRef imageDataSampleBuffer, NSError *error) {
         if (imageDataSampleBuffer != nil) {
             NSData *data = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageDataSampleBuffer];
